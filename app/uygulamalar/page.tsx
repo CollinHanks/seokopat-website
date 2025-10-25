@@ -95,7 +95,8 @@ const apps = [
     status: 'Aktif',
     statusColor: 'bg-green-100 text-green-800',
     cta: 'Ücretsiz Deneyin',
-    ctaLink: '/iletisim?uygulama=squezzly'
+    ctaLink: 'https://www.squezzly.com',
+    isExternal: true
   },
   {
     id: 'tagdio',
@@ -172,7 +173,8 @@ const apps = [
     status: 'Aktif',
     statusColor: 'bg-green-100 text-green-800',
     cta: 'Demo Talep Edin',
-    ctaLink: '/iletisim?uygulama=tagdio'
+    ctaLink: 'https://www.tagdio.com',
+    isExternal: true
   },
   {
     id: 'stokmatic',
@@ -249,7 +251,8 @@ const apps = [
     status: 'Aktif',
     statusColor: 'bg-green-100 text-green-800',
     cta: 'Ücretsiz Demo',
-    ctaLink: '/iletisim?uygulama=stokmatic'
+    ctaLink: 'https://stokmatic.com',
+    isExternal: true
   }
 ]
 
@@ -344,7 +347,7 @@ export default function AppsPage() {
               </div>
               
               <div className="flex items-center justify-center gap-4 mb-4">
-                <h2 className={`text-4xl md:text-5xl font-bold bg-gradient-to-r ${app.color} bg-clip-text text-transparent`}>
+                <h2 className={`text-4xl md:text-5xl font-bold bg-gradient-to-r ${app.color} bg-clip-text text-transparent inline-block pb-1`}>
                   {app.name}
                 </h2>
                 <span className={`px-4 py-1.5 rounded-full text-xs font-bold ${app.statusColor}`}>
@@ -360,7 +363,7 @@ export default function AppsPage() {
             {/* Features Grid - EPİK */}
             <div className="mb-16">
               <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                <span className={`bg-gradient-to-r ${app.color} bg-clip-text text-transparent`}>
+                <span className={`bg-gradient-to-r ${app.color} bg-clip-text text-transparent inline-block pb-1`}>
                   Özellikler
                 </span>
               </h3>
@@ -391,7 +394,7 @@ export default function AppsPage() {
             {/* Use Cases */}
             <div className="mb-16">
               <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                <span className={`bg-gradient-to-r ${app.color} bg-clip-text text-transparent`}>
+                <span className={`bg-gradient-to-r ${app.color} bg-clip-text text-transparent inline-block pb-1`}>
                   Kimler Kullanmalı?
                 </span>
               </h3>
@@ -412,7 +415,7 @@ export default function AppsPage() {
             {/* Benefits */}
             <div className="mb-12">
               <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-                <span className={`bg-gradient-to-r ${app.color} bg-clip-text text-transparent`}>
+                <span className={`bg-gradient-to-r ${app.color} bg-clip-text text-transparent inline-block pb-1`}>
                   Avantajlar
                 </span>
               </h3>
@@ -439,13 +442,15 @@ export default function AppsPage() {
                 Ücretsiz demo talep edin, ekibimiz sizinle iletişime geçsin. Tüm sorularınızı yanıtlayalım ve işletmeniz için en uygun çözümü birlikte belirleyelim.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link 
-                  href={app.ctaLink} 
+                <a 
+                  href={app.ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-white text-gray-900 font-bold rounded-xl hover:bg-gray-100 transition-all shadow-xl hover:scale-105"
                 >
                   <CloudArrowUpIcon className="h-6 w-6" />
                   {app.cta}
-                </Link>
+                </a>
                 <Link 
                   href="/iletisim" 
                   className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 backdrop-blur-sm border-2 border-white text-white font-bold rounded-xl hover:bg-white/20 transition-all"
