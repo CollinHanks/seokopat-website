@@ -1,206 +1,420 @@
-import { Metadata } from 'next'
-import Link from 'next/link'
-import { 
-  MagnifyingGlassIcon, 
-  ShoppingCartIcon, 
-  CodeBracketIcon, 
-  CubeIcon, 
-  PaintBrushIcon,
-  ChartBarIcon,
-  CheckCircleIcon,
-  ArrowRightIcon
-} from '@heroicons/react/24/outline'
+import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Hizmetler',
-  description: 'SEO, e-ticaret danışmanlığı, yazılım geliştirme ve dijital pazarlama hizmetlerimiz',
-}
+export default function HizmetlerPage() {
+  const hizmetler = [
+    {
+      id: 'seo',
+      slug: 'seo',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      ),
+      baslik: 'SEO Optimizasyonu',
+      kisa: 'Arama motorlarında üst sıralarda yer alın',
+      aciklama: 'Kapsamlı SEO analizi, anahtar kelime araştırması, teknik SEO optimizasyonu ve link building hizmetlerimizle Google sıralamalarınızı yükseltin.',
+      ozellikler: [
+        'Teknik SEO Denetimi',
+        'Anahtar Kelime Analizi',
+        'İçerik Optimizasyonu',
+        'Link Building Stratejisi',
+        'Rakip Analizi',
+        'Aylık Raporlama'
+      ],
+      gradient: 'from-pink-500 via-pink-600 to-pink-700',
+      iconBg: 'bg-pink-100 text-pink-600'
+    },
+    {
+      id: 'web-tasarim',
+      slug: 'tasarim',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      ),
+      baslik: 'Web Tasarım',
+      kisa: 'Markanızı dijitalde en iyi şekilde temsil edin',
+      aciklama: 'Modern, responsive ve kullanıcı dostu web siteleri tasarlıyoruz. UI/UX tasarım prensipleriyle markanıza değer katan özgün web çözümleri.',
+      ozellikler: [
+        'Modern & Responsive Tasarım',
+        'UI/UX Odaklı Yaklaşım',
+        'Hızlı Yükleme Performansı',
+        'SEO Dostu Kod Yapısı',
+        'Mobil Uyumlu',
+        'Özgün Tasarım Konsepti'
+      ],
+      gradient: 'from-blue-500 via-blue-600 to-indigo-700',
+      iconBg: 'bg-blue-100 text-blue-600'
+    },
+    {
+      id: 'dijital-pazarlama',
+      slug: 'pazarlama',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+      ),
+      baslik: 'Dijital Pazarlama',
+      kisa: 'Hedef kitlenize en etkili şekilde ulaşın',
+      aciklama: 'PPC kampanyaları, sosyal medya reklamları, içerik pazarlaması ve e-posta pazarlaması ile ROI\'nizi maksimize edin.',
+      ozellikler: [
+        'Google Ads Yönetimi',
+        'Facebook & Instagram Ads',
+        'Sosyal Medya Yönetimi',
+        'İçerik Pazarlaması',
+        'E-posta Pazarlaması',
+        'Dönüşüm Optimizasyonu'
+      ],
+      gradient: 'from-purple-500 via-pink-600 to-orange-500',
+      iconBg: 'bg-purple-100 text-purple-600'
+    },
+    {
+      id: 'e-ticaret',
+      slug: 'e-ticaret',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+      ),
+      baslik: 'E-Ticaret Danışmanlığı',
+      kisa: 'Online satışlarınızı katbekat artırın',
+      aciklama: 'E-ticaret platformlarında mağaza kurulumu, ürün listeleme optimizasyonu, kampanya yönetimi ve büyüme stratejileri ile satışlarınızı artırın.',
+      ozellikler: [
+        'Platform Kurulumu',
+        'Fiyatlama Stratejisi',
+        'Ürün Listeleme Optimizasyonu',
+        'Kampanya Yönetimi',
+        'Stok Yönetimi',
+        'Performans Analizi'
+      ],
+      gradient: 'from-blue-500 via-cyan-500 to-teal-500',
+      iconBg: 'bg-blue-100 text-blue-600'
+    },
+    {
+      id: 'yazilim',
+      slug: 'yazilim',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+        </svg>
+      ),
+      baslik: 'Yazılım Geliştirme',
+      kisa: 'İşletmenize özel yazılım çözümleri',
+      aciklama: 'İşletmenize özel web uygulamaları, mobil uygulamalar, API entegrasyonları ve otomasyon sistemleri geliştiriyoruz.',
+      ozellikler: [
+        'Web Uygulama Geliştirme',
+        'Mobil Uygulama',
+        'API Entegrasyonu',
+        'Otomasyon Sistemleri',
+        'Cloud Çözümleri',
+        'Teknik Destek'
+      ],
+      gradient: 'from-violet-500 via-purple-600 to-indigo-700',
+      iconBg: 'bg-violet-100 text-violet-600'
+    },
+    {
+      id: 'lojistik',
+      slug: 'lojistik',
+      icon: (
+        <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+      ),
+      baslik: 'Stok & Lojistik Yönetimi',
+      kisa: 'Tedarik zincirinizi optimize edin',
+      aciklama: 'Stok yönetimi, depo optimizasyonu, kargo entegrasyonları ve lojistik süreç iyileştirme hizmetlerimizle maliyetlerinizi düşürün.',
+      ozellikler: [
+        'Stok Takip Sistemi',
+        'Kargo Entegrasyonu',
+        'Envanter Optimizasyonu',
+        'Depo Yönetimi',
+        'Sipariş Yönetimi',
+        'Lojistik Raporlama'
+      ],
+      gradient: 'from-green-500 via-emerald-600 to-teal-600',
+      iconBg: 'bg-green-100 text-green-600'
+    }
+  ];
 
-const services = [
-  {
-    id: 'seo',
-    title: 'SEO Optimizasyonu',
-    description: 'Google\'da üst sıralara çıkın. AI destekli SEO stratejileri ile organik trafiğinizi %300 artırın.',
-    longDescription: 'Kapsamlı SEO analizi, anahtar kelime araştırması, teknik SEO optimizasyonu, içerik stratejisi ve link building hizmetlerimizle Google sıralamalarınızı yükseltin.',
-    icon: MagnifyingGlassIcon,
-    color: 'from-pink-400 to-pink-600',
-    features: [
-      'Teknik SEO Denetimi',
-      'Anahtar Kelime Analizi',
-      'İçerik Optimizasyonu',
-      'Link Building Stratejisi',
-      'Rakip Analizi',
-      'Aylık Raporlama'
-    ],
-    price: '₺5,000',
-    priceNote: 'aylık başlangıç'
-  },
-  {
-    id: 'e-ticaret',
-    title: 'E-Ticaret Danışmanlığı',
-    description: 'Shopify, Amazon, Etsy ve Trendyol\'da satışlarınızı katlayın.',
-    longDescription: 'E-ticaret platformlarında mağaza kurulumu, ürün listesi optimizasyonu, kampanya yönetimi ve büyüme stratejileri ile satışlarınızı artırın.',
-    icon: ShoppingCartIcon,
-    color: 'from-blue-400 to-blue-600',
-    features: [
-      'Platform Kurulumu',
-      'Ürün Listeleme Optimizasyonu',
-      'Fiyatlama Stratejisi',
-      'Stok Yönetimi',
-      'Kampanya Planlaması',
-      'Performans Analizi'
-    ],
-    price: '₺7,500',
-    priceNote: 'aylık başlangıç'
-  },
-  {
-    id: 'yazilim',
-    title: 'Yazılım Geliştirme',
-    description: 'Özel web uygulamaları, API entegrasyonları ve otomasyon çözümleri.',
-    longDescription: 'İşletmenize özel web uygulamaları, mobil uygulamalar, API entegrasyonları ve otomasyon sistemleri geliştiriyoruz.',
-    icon: CodeBracketIcon,
-    color: 'from-purple-400 to-purple-600',
-    features: [
-      'Web Uygulama Geliştirme',
-      'API Entegrasyonu',
-      'Otomasyon Sistemleri',
-      'Veritabanı Tasarımı',
-      'Cloud Çözümleri',
-      'Teknik Destek'
-    ],
-    price: '₺15,000',
-    priceNote: 'projeden başlangıç'
-  },
-  {
-    id: 'lojistik',
-    title: 'Stok & Lojistik Yönetimi',
-    description: 'Akıllı stok takibi ve lojistik optimizasyonu.',
-    longDescription: 'Stok yönetimi, depo optimizasyonu, kargo entegrasyonları ve lojistik süreç iyileştirme hizmetlerimizle maliyetlerinizi düşürün.',
-    icon: CubeIcon,
-    color: 'from-green-400 to-green-600',
-    features: [
-      'Stok Takip Sistemi',
-      'Depo Yönetimi',
-      'Kargo Entegrasyonu',
-      'Sipariş Yönetimi',
-      'Envanter Optimizasyonu',
-      'Lojistik Raporlama'
-    ],
-    price: '₺8,000',
-    priceNote: 'aylık başlangıç'
-  },
-  {
-    id: 'tasarim',
-    title: 'Web & Shopify Tasarım',
-    description: 'Dönüşüm odaklı, modern ve hızlı web siteleri.',
-    longDescription: 'Markanızı dijitalde en iyi şekilde yansıtan, kullanıcı dostu ve dönüşüm odaklı web siteleri ve e-ticaret mağazaları tasarlıyoruz.',
-    icon: PaintBrushIcon,
-    color: 'from-orange-400 to-orange-600',
-    features: [
-      'UI/UX Tasarım',
-      'Responsive Tasarım',
-      'Shopify Tema Geliştirme',
-      'A/B Test',
-      'Hız Optimizasyonu',
-      'SEO Uyumlu Kodlama'
-    ],
-    price: '₺10,000',
-    priceNote: 'projeden başlangıç'
-  },
-  {
-    id: 'pazarlama',
-    title: 'Dijital Pazarlama',
-    description: 'Google Ads, Facebook Ads ve sosyal medya stratejileri.',
-    longDescription: 'PPC kampanyaları, sosyal medya reklamları, içerik pazarlaması ve e-posta pazarlaması ile ROI\'nizi maksimize edin.',
-    icon: ChartBarIcon,
-    color: 'from-indigo-400 to-indigo-600',
-    features: [
-      'Google Ads Yönetimi',
-      'Facebook & Instagram Ads',
-      'Sosyal Medya Yönetimi',
-      'İçerik Pazarlaması',
-      'E-posta Pazarlaması',
-      'Dönüşüm Optimizasyonu'
-    ],
-    price: '₺6,000',
-    priceNote: 'aylık başlangıç'
-  }
-]
+  const surecAdimlar = [
+    {
+      numara: '01',
+      baslik: 'Keşif & Analiz',
+      aciklama: 'İhtiyaçlarınızı dinler, hedeflerinizi belirler ve detaylı analiz yaparız.'
+    },
+    {
+      numara: '02',
+      baslik: 'Strateji Geliştirme',
+      aciklama: 'Size özel, hedefe yönelik kapsamlı bir strateji oluştururuz.'
+    },
+    {
+      numara: '03',
+      baslik: 'Uygulama',
+      aciklama: 'Planı hayata geçiririz ve her adımda şeffaf bir şekilde bilgilendiririz.'
+    },
+    {
+      numara: '04',
+      baslik: 'Optimizasyon & Büyüme',
+      aciklama: 'Sürekli izler, optimize eder ve işinizi büyütürüz.'
+    }
+  ];
 
-export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-seokopat-navy to-seokopat-pink text-white">
-        <div className="container-custom py-20">
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Dijital Başarınız İçin <span className="text-seokopat-light-pink">360° Çözümler</span>
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 opacity-95" />
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Dijital Başarınız İçin <span className="text-yellow-300">360°</span> Çözümler
             </h1>
-            <p className="text-xl opacity-90">
-              SEO\'dan yazılım geliştirmeye, e-ticaretten dijital pazarlamaya kadar tüm ihtiyaçlarınız için tek adres.
+            <p className="text-xl text-white/90 mb-8 leading-relaxed">
+              SEO'dan yazılım geliştirmeye, e-ticaretten dijital pazarlamaya kadar tüm ihtiyaçlarınız için tek adres.
             </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link 
+                href="#hizmetler" 
+                className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-all shadow-lg hover:shadow-xl"
+              >
+                Hizmetleri Keşfet
+              </Link>
+              <Link 
+                href="/iletisim" 
+                className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all border border-white/20"
+              >
+                Ücretsiz Danışmanlık
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full blur-xl animate-pulse" />
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-white/10 rounded-full blur-xl animate-pulse delay-1000" />
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                200+
+              </div>
+              <div className="text-gray-600 font-medium">Mutlu Müşteri</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">
+                500+
+              </div>
+              <div className="text-gray-600 font-medium">Tamamlanan Proje</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent mb-2">
+                %350
+              </div>
+              <div className="text-gray-600 font-medium">Ortalama ROI Artışı</div>
+            </div>
+            <div className="text-center">
+              <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-2">
+                7/24
+              </div>
+              <div className="text-gray-600 font-medium">Destek</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="container-custom py-16">
-        <div className="space-y-16">
-          {services.map((service, index) => (
-            <div key={service.id} className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-              <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${service.color} mb-6`}>
-                  <service.icon className="h-8 w-8 text-white" />
-                </div>
-                <h2 className="text-3xl font-bold text-seokopat-navy mb-4">{service.title}</h2>
-                <p className="text-lg text-seokopat-blue-gray mb-6">{service.longDescription}</p>
+      {/* Hizmetler Grid */}
+      <section id="hizmetler" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Hizmetlerimiz
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              İşletmenizin dijital dönüşümü için ihtiyacınız olan her şey
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {hizmetler.map((hizmet) => (
+              <Link
+                key={hizmet.id}
+                href={`/hizmetler/${hizmet.slug}`}
+                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:-translate-y-2"
+              >
+                {/* Gradient Header */}
+                <div className={`h-2 bg-gradient-to-r ${hizmet.gradient}`} />
                 
-                <div className="grid grid-cols-2 gap-3 mb-8">
-                  {service.features.map((feature) => (
-                    <div key={feature} className="flex items-start gap-2">
-                      <CheckCircleIcon className="h-5 w-5 text-seokopat-pink mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-seokopat-navy">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="flex items-end gap-6">
-                  <div>
-                    <div className="text-3xl font-bold text-seokopat-pink">{service.price}</div>
-                    <div className="text-sm text-seokopat-blue-gray">{service.priceNote}</div>
+                <div className="p-8">
+                  {/* Icon */}
+                  <div className={`w-20 h-20 ${hizmet.iconBg} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {hizmet.icon}
                   </div>
-                  <Link href="/iletisim" className="btn-primary inline-flex items-center gap-2">
-                    Teklif Al
-                    <ArrowRightIcon className="h-5 w-5" />
-                  </Link>
+
+                  {/* Content */}
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 transition-all">
+                    {hizmet.baslik}
+                  </h3>
+                  
+                  <p className="text-gray-600 mb-4 text-lg font-medium">
+                    {hizmet.kisa}
+                  </p>
+                  
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {hizmet.aciklama}
+                  </p>
+
+                  {/* Features */}
+                  <div className="space-y-2 mb-6">
+                    {hizmet.ozellikler.slice(0, 3).map((ozellik, index) => (
+                      <div key={index} className="flex items-center text-sm text-gray-700">
+                        <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                        {ozellik}
+                      </div>
+                    ))}
+                    {hizmet.ozellikler.length > 3 && (
+                      <div className="text-sm text-gray-500 font-medium mt-2">
+                        +{hizmet.ozellikler.length - 3} özellik daha
+                      </div>
+                    )}
+                  </div>
+
+                  {/* CTA */}
+                  <div className="flex items-center text-blue-600 font-semibold group-hover:text-purple-600 transition-colors">
+                    Detayları İncele
+                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
                 </div>
-              </div>
-              
-              <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <div className={`absolute inset-0 bg-gradient-to-r ${service.color} rounded-3xl blur-3xl opacity-20`}></div>
-                <div className="relative bg-gradient-to-br from-gray-50 to-white rounded-3xl p-12 shadow-2xl">
-                  <service.icon className="h-32 w-32 mx-auto text-seokopat-navy opacity-10" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Çalışma Süreci */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Çalışma Sürecimiz
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Başarıya giden yolda izlediğimiz adımlar
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {surecAdimlar.map((adim, index) => (
+              <div key={index} className="relative">
+                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full">
+                  <div className="text-6xl font-bold text-gray-100 mb-4">
+                    {adim.numara}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {adim.baslik}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {adim.aciklama}
+                  </p>
                 </div>
+                {index < surecAdimlar.length - 1 && (
+                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
+                    <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
+                )}
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Neden Biz */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Neden Seokopat?
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Dijital dünyada fark yaratan özellikleri
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Kanıtlanmış Başarı</h3>
+              <p className="text-gray-600">200+ mutlu müşteri ve 500+ başarılı proje ile sektörde güvenilir isim</p>
             </div>
-          ))}
+
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Hızlı & Etkili</h3>
+              <p className="text-gray-600">Hızlı teslimat ve etkili çözümlerle işinizi bir adım öne taşıyoruz</p>
+            </div>
+
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all">
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">7/24 Destek</h3>
+              <p className="text-gray-600">Her zaman yanınızdayız. Sorularınıza hızlı ve profesyonel yanıt</p>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-seokopat-pink to-seokopat-navy py-16">
-        <div className="container-custom text-center text-white">
-          <h2 className="text-3xl font-bold mb-6">Hangi Hizmet Size Uygun?</h2>
-          <p className="text-xl mb-8 opacity-90">
-            İhtiyacınıza özel çözüm için ücretsiz danışmanlık alın
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600" />
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20" />
+        
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Projenize Hemen Başlayalım
+          </h2>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+            Ücretsiz danışmanlık için iletişime geçin, size özel çözümler geliştirelim
           </p>
-          <Link href="/iletisim" className="inline-flex items-center gap-2 bg-white text-seokopat-navy px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl">
-            Ücretsiz Danışmanlık Al
-            <ArrowRightIcon className="h-5 w-5" />
-          </Link>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/iletisim"
+              className="bg-white text-blue-600 px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-50 transition-all shadow-xl hover:shadow-2xl"
+            >
+              Ücretsiz Danışmanlık Al
+            </Link>
+            <Link
+              href="/hakkimizda"
+              className="bg-white/10 backdrop-blur-sm text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all border-2 border-white/20"
+            >
+              Hakkımızda
+            </Link>
+          </div>
         </div>
       </section>
     </div>
-  )
+  );
 }
