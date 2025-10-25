@@ -139,23 +139,71 @@ export default function HizmetlerPage() {
   const surecAdimlar = [
     {
       numara: '01',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+        </svg>
+      ),
       baslik: 'Keşif & Analiz',
-      aciklama: 'İhtiyaçlarınızı dinler, hedeflerinizi belirler ve detaylı analiz yaparız.'
+      kisaAciklama: 'İhtiyaçlarınızı dinler, hedeflerinizi belirler ve detaylı analiz yaparız',
+      detaylar: [
+        'Mevcut durum analizi ve rakip araştırması',
+        'Hedef kitle ve pazar araştırması',
+        'SWOT analizi ile güçlü/zayıf yönlerin tespiti',
+        'Bütçe ve zaman planlaması'
+      ],
+      renk: 'from-blue-500 to-cyan-500'
     },
     {
       numara: '02',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+        </svg>
+      ),
       baslik: 'Strateji Geliştirme',
-      aciklama: 'Size özel, hedefe yönelik kapsamlı bir strateji oluştururuz.'
+      kisaAciklama: 'Size özel, hedefe yönelik kapsamlı bir dijital strateji oluştururuz',
+      detaylar: [
+        'Hedefe özel aksiyon planı hazırlama',
+        'KPI belirleme ve ölçüm metrikleri',
+        'Kanal ve platform seçimi',
+        'İçerik ve kampanya takvimi oluşturma'
+      ],
+      renk: 'from-purple-500 to-pink-500'
     },
     {
       numara: '03',
-      baslik: 'Uygulama',
-      aciklama: 'Planı hayata geçiririz ve her adımda şeffaf bir şekilde bilgilendiririz.'
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+      baslik: 'Uygulama & Yürütme',
+      kisaAciklama: 'Planı hayata geçirir ve her adımda şeffaf bilgilendirme yaparız',
+      detaylar: [
+        'Profesyonel ekip ile hızlı başlangıç',
+        'Düzenli ilerleme raporları',
+        'Şeffaf iletişim ve anlık geri bildirim',
+        'Agile metodoloji ile esnek çalışma'
+      ],
+      renk: 'from-orange-500 to-red-500'
     },
     {
       numara: '04',
+      icon: (
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        </svg>
+      ),
       baslik: 'Optimizasyon & Büyüme',
-      aciklama: 'Sürekli izler, optimize eder ve işinizi büyütürüz.'
+      kisaAciklama: 'Sürekli izler, optimize eder ve işinizi büyütürüz',
+      detaylar: [
+        'Performans takibi ve A/B testleri',
+        'Veri analizi ile sürekli iyileştirme',
+        'ROI maksimizasyonu için optimizasyon',
+        'Ölçeklenebilir büyüme stratejileri'
+      ],
+      renk: 'from-green-500 to-emerald-500'
     }
   ];
 
@@ -307,36 +355,73 @@ export default function HizmetlerPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Çalışma Sürecimiz
+              Dijital Başarıya 4 Adımda Ulaşın
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Başarıya giden yolda izlediğimiz adımlar
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Kanıtlanmış metodolojimiz ile projenizi baştan sona profesyonelce yönetiyoruz. Her adımda şeffaflık, kalite ve sonuç odaklı çalışma garantisi.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
             {surecAdimlar.map((adim, index) => (
-              <div key={index} className="relative">
-                <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <div className="text-6xl font-bold text-gray-100 mb-4">
-                    {adim.numara}
+              <div key={index} className="relative group">
+                {/* Card */}
+                <div className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 h-full border-t-4 border-transparent hover:border-blue-500">
+                  {/* Number Badge */}
+                  <div className={`w-16 h-16 bg-gradient-to-br ${adim.renk} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    <span className="text-2xl font-bold text-white">{adim.numara}</span>
                   </div>
+
+                  {/* Icon */}
+                  <div className="text-gray-400 mb-4">
+                    {adim.icon}
+                  </div>
+
+                  {/* Title */}
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {adim.baslik}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {adim.aciklama}
+
+                  {/* Description */}
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    {adim.kisaAciklama}
                   </p>
+
+                  {/* Details List */}
+                  <ul className="space-y-2">
+                    {adim.detaylar.map((detay, idx) => (
+                      <li key={idx} className="flex items-start text-sm text-gray-600">
+                        <svg className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        {detay}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+
+                {/* Arrow for desktop */}
                 {index < surecAdimlar.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                  <div className="hidden lg:block absolute top-1/3 -right-4 transform z-10">
+                    <div className="w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
+                      <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </div>
                   </div>
                 )}
               </div>
             ))}
+          </div>
+
+          {/* Bottom Info */}
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center gap-3 bg-white px-8 py-4 rounded-full shadow-lg">
+              <svg className="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-gray-700 font-semibold">Ortalama proje tamamlanma süresi: 2-4 hafta</span>
+            </div>
           </div>
         </div>
       </section>
