@@ -52,22 +52,22 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
       
       <div className="relative z-10">
-        <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pt-16 pb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-14">
+        <div className="max-w-[1600px] mx-auto px-8 sm:px-10 lg:px-16 pt-20 pb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16">
             
             <div className="lg:col-span-4 md:col-span-2">
-              <Link href="/" className="inline-block mb-6">
+              <Link href="/" className="inline-block mb-7">
                 <Image 
                   src="/logo-white.png" 
                   alt="Seokopat" 
-                  width={180} 
-                  height={45}
-                  className="h-9 w-auto"
+                  width={200} 
+                  height={50}
+                  className="h-10 w-auto"
                   priority
                 />
               </Link>
               
-              <p className="text-blue-200 mb-6 leading-relaxed text-base">
+              <p className="text-blue-200 mb-7 leading-relaxed text-base">
                 AI destekli dijital çözümlerle işletmenizi büyütün. SEO'dan yazılım geliştirmeye, tek adres.
               </p>
 
@@ -106,7 +106,7 @@ export default function Footer() {
                 )}
               </div>
 
-              <div className="flex gap-3 mt-6">
+              <div className="flex gap-3 mt-7">
                 <a href="#" className="w-11 h-11 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center transition-all hover:scale-110" aria-label="Twitter">
                   <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -131,13 +131,13 @@ export default function Footer() {
             </div>
 
             <div className="lg:col-span-2">
-              <h3 className="text-white font-bold text-lg mb-6">Hizmetler</h3>
+              <h3 className="text-white font-bold text-[17px] mb-5 leading-tight">Hizmetler</h3>
               <ul className="space-y-3">
                 {hizmetler.map((hizmet, index) => (
                   <li key={index}>
                     <Link 
                       href={hizmet.link}
-                      className="text-blue-200 hover:text-white transition-colors flex items-center group text-base"
+                      className="text-blue-200 hover:text-white transition-colors flex items-center group text-[15px] leading-tight"
                     >
                       <svg className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -150,13 +150,13 @@ export default function Footer() {
             </div>
 
             <div className="lg:col-span-2">
-              <h3 className="text-white font-bold text-lg mb-6">Uygulamalar</h3>
+              <h3 className="text-white font-bold text-[17px] mb-5 leading-tight">Uygulamalar</h3>
               <ul className="space-y-3">
                 {uygulamalar.map((uygulama, index) => (
                   <li key={index}>
                     <Link 
                       href={uygulama.link}
-                      className="text-blue-200 hover:text-white transition-colors flex items-center group text-base"
+                      className="text-blue-200 hover:text-white transition-colors flex items-center group text-[15px] leading-tight"
                     >
                       <svg className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -169,13 +169,13 @@ export default function Footer() {
             </div>
 
             <div className="lg:col-span-2">
-              <h3 className="text-white font-bold text-lg mb-6">Kurumsal</h3>
+              <h3 className="text-white font-bold text-[17px] mb-5 leading-tight">Kurumsal</h3>
               <ul className="space-y-3">
                 {kurumsal.map((item, index) => (
                   <li key={index}>
                     <Link 
                       href={item.link}
-                      className="text-blue-200 hover:text-white transition-colors flex items-center group text-base"
+                      className="text-blue-200 hover:text-white transition-colors flex items-center group text-[15px] leading-tight"
                     >
                       <svg className="w-4 h-4 mr-2 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -188,16 +188,16 @@ export default function Footer() {
             </div>
 
             <div className="lg:col-span-2">
-              <h3 className="text-white font-bold text-lg mb-6">İletişim</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start text-blue-200 text-base">
+              <h3 className="text-white font-bold text-[17px] mb-5 leading-tight">İletişim</h3>
+              <ul className="space-y-3.5">
+                <li className="flex items-start text-blue-200 text-[15px] leading-tight">
                   <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <span>İstanbul, Türkiye</span>
                 </li>
-                <li className="flex items-start text-blue-200 text-base">
+                <li className="flex items-start text-blue-200 text-[15px] leading-tight">
                   <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -205,7 +205,7 @@ export default function Footer() {
                     info@seokopat.com
                   </a>
                 </li>
-                <li className="flex items-start text-blue-200 text-base">
+                <li className="flex items-start text-blue-200 text-[15px] leading-tight">
                   <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
@@ -213,7 +213,7 @@ export default function Footer() {
                     +90 555 555 55 55
                   </a>
                 </li>
-                <li className="flex items-start text-blue-200 text-base">
+                <li className="flex items-start text-blue-200 text-[15px] leading-tight">
                   <svg className="w-5 h-5 mr-3 flex-shrink-0 mt-0.5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -225,7 +225,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10">
-          <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 py-6">
+          <div className="max-w-[1600px] mx-auto px-8 sm:px-10 lg:px-16 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-blue-200 text-sm text-center md:text-left">
                 © 2025 Seokopat. Tüm hakları saklıdır.
