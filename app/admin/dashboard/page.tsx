@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { 
   HomeIcon, 
   DocumentTextIcon, 
@@ -10,55 +11,108 @@ import {
   PencilIcon, 
   TrashIcon,
   EyeIcon,
-  ChartBarIcon,
   Cog6ToothIcon,
   ArrowRightOnRectangleIcon,
   MagnifyingGlassIcon
 } from '@heroicons/react/24/outline';
 
-export default function AdminDashboard() {
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  date: string;
+  views: number;
+  author: string;
+  tags: string[];
+  category: string;
+  status: 'published' | 'draft';
+}
+
+export default function AllBlogsPage() {
+  const router = useRouter();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filterStatus, setFilterStatus] = useState('all');
+  const [filterCategory, setFilterCategory] = useState('all');
 
-  // Mock blog posts data
-  const blogPosts = [
-    {
-      id: 1,
-      title: 'E-Ticaret Sitenizi Optimize Etmenin 10 Yolu',
-      excerpt: 'E-ticaret sitenizin performansını artırmak ve satışlarınızı yükseltmek için kanıtlanmış stratejiler.',
-      date: '15.01.2025',
-      views: '5.6k',
-      author: 'Seokopat Ekibi',
-      tags: ['E-Ticaret', 'SEO', 'Optimizasyon'],
-      status: 'published'
-    },
-    {
-      id: 2,
-      title: 'Yapay Zeka ile SEO: Geleceğin Stratejileri',
-      excerpt: 'AI ve makine öğrenimi SEO stratejilerinizi nasıl dönüştürüyor? İşte bilmeniz gerekenler.',
-      date: '10.01.2025',
-      views: '7.0k',
-      author: 'Seokopat Ekibi',
-      tags: ['SEO', 'Yapay Zeka', 'Dijital Pazarlama'],
-      status: 'published'
-    },
-    {
-      id: 3,
-      title: 'Shopify Mağazanızı Büyütmenin 5 Adımı',
-      excerpt: 'Shopify mağazanızı bir sonraki seviyeye taşımak için izlemeniz gereken pratik adımlar.',
-      date: '05.01.2025',
-      views: '6.0k',
-      author: 'Seokopat Ekibi',
-      tags: ['Shopify', 'E-Ticaret', 'Büyüme'],
-      status: 'draft'
+  // Load posts from localStorage
+  useEffect(() => {
+    const savedPosts = localStorage.getItem('blogPosts');
+    if (savedPosts) {
+      setPosts(JSON.parse(savedPosts));
+    } else {
+      // Mock initial data
+      const initialPosts: BlogPost[] = [
+        {
+          id: '1',
+          title: 'E-Ticaret Sitenizi Optimize Etmenin 10 Yolu',
+          excerpt: 'E-ticaret sitenizin performansını artırmak ve satışlarınızı yükseltmek için kanıtlanmış stratejiler.',
+          content: 'Full content here...',
+          date: new Date().toISOString(),
+          views: 5600,
+          author: 'Seokopat Ekibi',
+          tags: ['E-Ticaret', 'SEO', 'Optimizasyon'],
+          category: 'e-ticaret',
+          status: 'published'
+        },
+        {
+          id: '2',
+          title: 'Yapay Zeka ile SEO: Geleceğin Stratejileri',
+          excerpt: 'AI ve makine öğrenimi SEO stratejilerinizi nasıl dönüştürüyor?',
+          content: 'Full content here...',
+          date: new Date().toISOString(),
+          views: 7000,
+          author: 'Seokopat Ekibi',
+          tags: ['SEO', 'Yapay Zeka', 'Dijital Pazarlama'],
+          category: 'seo',
+          status: 'published'
+        },
+        {
+          id: '3',
+          title: 'Shopify Mağazanızı Büyütmenin 5 Adımı',
+          excerpt: 'Shopify mağazanızı bir sonraki seviyeye taşımak için pratik adımlar.',
+          content: 'Full content here...',
+          date: new Date().toISOString(),
+          views: 6000,
+          author: 'Seokopat Ekibi',
+          tags: ['Shopify', 'E-Ticaret', 'Büyüme'],
+          category: 'e-ticaret',
+          status: 'draft'
+        }
+      ];
+      localStorage.setItem('blogPosts', JSON.stringify(initialPosts));
+      setPosts(initialPosts);
     }
-  ];
+  }, []);
 
-  const stats = [
-    { label: 'Toplam Yazı', value: '3', icon: DocumentTextIcon, color: 'from-blue-500 to-cyan-500' },
-    { label: 'Toplam Görüntülenme', value: '18.6k', icon: EyeIcon, color: 'from-purple-500 to-pink-500' },
-    { label: 'Yayında', value: '2', icon: ChartBarIcon, color: 'from-green-500 to-emerald-500' },
-    { label: 'Taslak', value: '1', icon: PencilIcon, color: 'from-orange-500 to-red-500' }
-  ];
+  const handleDelete = (id: string) => {
+    if (confirm('Bu yazıyı silmek istediğinize emin misiniz?')) {
+      const updatedPosts = posts.filter(post => post.id !== id);
+      setPosts(updatedPosts);
+      localStorage.setItem('blogPosts', JSON.stringify(updatedPosts));
+    }
+  };
+
+  const handleLogout = () => {
+    if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
+      router.push('/admin');
+    }
+  };
+
+  const filteredPosts = posts.filter(post => {
+    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesStatus = filterStatus === 'all' || post.status === filterStatus;
+    const matchesCategory = filterCategory === 'all' || post.category === filterCategory;
+    return matchesSearch && matchesStatus && matchesCategory;
+  });
+
+  const stats = {
+    total: posts.length,
+    views: posts.reduce((sum, post) => sum + post.views, 0),
+    published: posts.filter(p => p.status === 'published').length,
+    draft: posts.filter(p => p.status === 'draft').length
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -69,14 +123,7 @@ export default function AdminDashboard() {
           {/* Logo */}
           <div className="p-6 border-b border-gray-700">
             <Link href="/" className="block">
-              <Image 
-                src="/logo-white.png" 
-                alt="Seokopat" 
-                width={150} 
-                height={38}
-                className="h-8 w-auto"
-                priority
-              />
+              <h1 className="text-2xl font-bold text-white">Seokopat</h1>
             </Link>
             <p className="text-xs text-gray-400 mt-2">Admin Panel</p>
           </div>
@@ -85,10 +132,10 @@ export default function AdminDashboard() {
           <nav className="flex-1 px-4 py-6 space-y-2">
             <Link 
               href="/admin/dashboard" 
-              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300 hover:bg-white/10 transition-all"
             >
               <HomeIcon className="h-5 w-5" />
-              <span className="font-semibold">Ana Sayfa</span>
+              <span>Ana Sayfa</span>
             </Link>
             
             <Link 
@@ -101,10 +148,10 @@ export default function AdminDashboard() {
             
             <Link 
               href="/admin/blog" 
-              className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-300 hover:bg-white/10 transition-all"
+              className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white shadow-lg"
             >
               <DocumentTextIcon className="h-5 w-5" />
-              <span>Tüm Yazılar</span>
+              <span className="font-semibold">Tüm Yazılar</span>
             </Link>
             
             <Link 
@@ -127,7 +174,10 @@ export default function AdminDashboard() {
                 <p className="text-xs text-gray-400">admin@seokopat.com</p>
               </div>
             </div>
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition-all">
+            <button 
+              onClick={handleLogout}
+              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm transition-all"
+            >
               <ArrowRightOnRectangleIcon className="h-4 w-4" />
               Çıkış Yap
             </button>
@@ -141,8 +191,8 @@ export default function AdminDashboard() {
         <div className="mb-8">
           <div className="flex items-center justify-between mb-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Blog Yönetimi</h1>
-              <p className="text-gray-600">Toplam 3 yazı</p>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">Tüm Yazılar</h1>
+              <p className="text-gray-600">Toplam {stats.total} yazı</p>
             </div>
             <Link 
               href="/admin/blog/new"
@@ -155,20 +205,45 @@ export default function AdminDashboard() {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            {stats.map((stat, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`p-3 rounded-xl bg-gradient-to-r ${stat.color}`}>
-                    <stat.icon className="h-6 w-6 text-white" />
-                  </div>
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500">
+                  <DocumentTextIcon className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</p>
-                <p className="text-sm text-gray-600">{stat.label}</p>
               </div>
-            ))}
+              <p className="text-3xl font-bold text-gray-900 mb-1">{stats.total}</p>
+              <p className="text-sm text-gray-600">Toplam Yazı</p>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500">
+                  <EyeIcon className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <p className="text-3xl font-bold text-gray-900 mb-1">{stats.views.toLocaleString()}</p>
+              <p className="text-sm text-gray-600">Toplam Görüntülenme</p>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500">
+                  <DocumentTextIcon className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <p className="text-3xl font-bold text-gray-900 mb-1">{stats.published}</p>
+              <p className="text-sm text-gray-600">Yayında</p>
+            </div>
+            
+            <div className="bg-white rounded-2xl p-6 shadow-lg">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500">
+                  <PencilIcon className="h-6 w-6 text-white" />
+                </div>
+              </div>
+              <p className="text-3xl font-bold text-gray-900 mb-1">{stats.draft}</p>
+              <p className="text-sm text-gray-600">Taslak</p>
+            </div>
           </div>
 
           {/* Search & Filter */}
@@ -184,16 +259,24 @@ export default function AdminDashboard() {
                   className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
                 />
               </div>
-              <select className="px-6 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all">
-                <option>Tüm Durumlar</option>
-                <option>Yayında</option>
-                <option>Taslak</option>
+              <select 
+                value={filterStatus}
+                onChange={(e) => setFilterStatus(e.target.value)}
+                className="px-6 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+              >
+                <option value="all">Tüm Durumlar</option>
+                <option value="published">Yayında</option>
+                <option value="draft">Taslak</option>
               </select>
-              <select className="px-6 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all">
-                <option>Tüm Kategoriler</option>
-                <option>SEO</option>
-                <option>E-Ticaret</option>
-                <option>Dijital Pazarlama</option>
+              <select 
+                value={filterCategory}
+                onChange={(e) => setFilterCategory(e.target.value)}
+                className="px-6 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+              >
+                <option value="all">Tüm Kategoriler</option>
+                <option value="seo">SEO</option>
+                <option value="e-ticaret">E-Ticaret</option>
+                <option value="dijital-pazarlama">Dijital Pazarlama</option>
               </select>
             </div>
           </div>
@@ -226,7 +309,7 @@ export default function AdminDashboard() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {blogPosts.map((post) => (
+                {filteredPosts.map((post) => (
                   <tr key={post.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-6">
                       <div>
@@ -254,13 +337,15 @@ export default function AdminDashboard() {
                       </div>
                     </td>
                     <td className="px-6 py-6">
-                      <p className="text-sm text-gray-600">{post.date}</p>
+                      <p className="text-sm text-gray-600">
+                        {new Date(post.date).toLocaleDateString('tr-TR')}
+                      </p>
                     </td>
                     <td className="px-6 py-6">
                       <div className="flex items-center gap-2">
                         <EyeIcon className="h-4 w-4 text-gray-400" />
                         <span className="text-sm font-semibold text-gray-900">
-                          {post.views}
+                          {post.views.toLocaleString()}
                         </span>
                       </div>
                     </td>
@@ -293,6 +378,7 @@ export default function AdminDashboard() {
                           <PencilIcon className="h-5 w-5" />
                         </Link>
                         <button
+                          onClick={() => handleDelete(post.id)}
                           className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all"
                           title="Sil"
                         >
