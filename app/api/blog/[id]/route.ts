@@ -1,14 +1,18 @@
 // app/api/blog/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server'
-import { getPost, savePost, deletePost, generateSlug } from '@/lib/blog-client'
+import { getPostBySlug } from '@/lib/blog-server'
+import fs from 'fs'
+import path from 'path'
+import { BlogPost } from '@/lib/types'
 
-// Blog yazısı getir
+const contentDir = path.join(process.cwd(), 'content', 'blog')
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const post = await getPost(params.id)
+    const post = await getPostBySlug(params.id)
     
     if (!post) {
       return NextResponse.json(
@@ -17,37 +21,36 @@ export async function GET(
       )
     }
     
-    return NextResponse.json({ post })
+    return NextResponse.json(post)
   } catch (error) {
+    console.error('Blog post fetch error:', error)
     return NextResponse.json(
-      { error: 'Blog yazısı getirilemedi' },
+      { error: 'Blog yazısı yüklenemedi' },
       { status: 500 }
     )
   }
 }
 
-// Blog yazısı güncelle
 export async function PUT(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const data = await request.json()
+    const post: BlogPost = await request.json()
     
-    const post = {
-      ...data,
-      id: params.id,
-      slug: data.slug || generateSlug(data.title)
+    // Klasörü oluştur (yoksa)
+    if (!fs.existsSync(contentDir)) {
+      fs.mkdirSync(contentDir, { recursive: true })
     }
     
-    await savePost(post)
+    // Dosyaya kaydet
+    const filename = `${post.slug}.json`
+    const filepath = path.join(contentDir, filename)
+    fs.writeFileSync(filepath, JSON.stringify(post, null, 2), 'utf8')
     
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Blog yazısı güncellendi',
-      post 
-    })
+    return NextResponse.json({ success: true, post })
   } catch (error) {
+    console.error('Blog post update error:', error)
     return NextResponse.json(
       { error: 'Blog yazısı güncellenemedi' },
       { status: 500 }
@@ -55,19 +58,21 @@ export async function PUT(
   }
 }
 
-// Blog yazısı sil
 export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    await deletePost(params.id)
+    const filename = `${params.id}.json`
+    const filepath = path.join(contentDir, filename)
     
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Blog yazısı silindi' 
-    })
+    if (fs.existsSync(filepath)) {
+      fs.unlinkSync(filepath)
+    }
+    
+    return NextResponse.json({ success: true })
   } catch (error) {
+    console.error('Blog post delete error:', error)
     return NextResponse.json(
       { error: 'Blog yazısı silinemedi' },
       { status: 500 }

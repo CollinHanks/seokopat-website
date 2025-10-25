@@ -1,211 +1,312 @@
-// app/admin/page.tsx
 'use client'
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import LoginForm from '@/components/admin/LoginForm'
 import AdminNavbar from '@/components/admin/AdminNavbar'
+import LoginForm from '@/components/admin/LoginForm'
 import PostList from '@/components/admin/PostList'
-import PostEditor from '@/components/admin/PostEditor'
+import { BlogPost } from '@/lib/types'
+import { getBlogPosts, saveBlogPost, deleteBlogPost } from '@/lib/blog-client'
+import dynamic from 'next/dynamic'
+import 'react-quill/dist/quill.snow.css'
 
-interface BlogPost {
-  id: string
-  slug: string
-  title: string
-  excerpt: string
-  content: string
-  category: string
-  tags: string[]
-  author: string
-  date: string
-  readTime: string
-  image?: string
-  seo?: {
-    metaTitle?: string
-    metaDescription?: string
-    keywords?: string[]
-  }
-}
+// React Quill - SSR safe
+const ReactQuill = dynamic(() => import('react-quill'), {
+  ssr: false,
+  loading: () => (
+    <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 min-h-[400px] flex items-center justify-center bg-gray-50">
+      <p className="text-gray-500">Editor yükleniyor...</p>
+    </div>
+  ),
+})
+
+const ADMIN_PASSWORD = 'seokopat2024'
 
 export default function AdminPage() {
-  const router = useRouter()
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [view, setView] = useState<'list' | 'create' | 'edit'>('list')
   const [posts, setPosts] = useState<BlogPost[]>([])
-  const [loading, setLoading] = useState(true)
-  const [showEditor, setShowEditor] = useState(false)
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null)
-  const [notification, setNotification] = useState<{
-    type: 'success' | 'error'
-    message: string
-  } | null>(null)
 
-  // Auth kontrolü
+  // Form states
+  const [title, setTitle] = useState('')
+  const [content, setContent] = useState('')
+  const [excerpt, setExcerpt] = useState('')
+  const [author, setAuthor] = useState('Seokopat Ekibi')
+  const [image, setImage] = useState('')
+  const [tags, setTags] = useState('')
+
+  // Load posts on mount
   useEffect(() => {
-    const adminAuth = localStorage.getItem('adminAuth')
-    if (adminAuth === 'true') {
-      setIsLoggedIn(true)
+    if (isAuthenticated) {
       loadPosts()
+    }
+  }, [isAuthenticated])
+
+  const loadPosts = () => {
+    const loadedPosts = getBlogPosts()
+    setPosts(loadedPosts)
+  }
+
+  const handleLogin = (password: string) => {
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true)
     } else {
-      setLoading(false)
-    }
-  }, [])
-
-  // Blog yazılarını yükle
-  const loadPosts = async () => {
-    setLoading(true)
-    try {
-      const response = await fetch('/api/blog')
-      const data = await response.json()
-      
-      if (data.posts) {
-        setPosts(data.posts)
-      }
-    } catch (error) {
-      showNotification('error', 'Blog yazıları yüklenemedi')
-    } finally {
-      setLoading(false)
+      alert('Yanlış şifre!')
     }
   }
 
-  // Bildirim göster
-  const showNotification = (type: 'success' | 'error', message: string) => {
-    setNotification({ type, message })
-    setTimeout(() => setNotification(null), 3000)
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+    setView('list')
+    resetForm()
   }
 
-  // Blog yazısı kaydet
-  const handleSave = async (postData: BlogPost) => {
-    try {
-      const url = editingPost 
-        ? `/api/blog/${editingPost.id}`
-        : '/api/blog'
-      
-      const method = editingPost ? 'PUT' : 'POST'
-      
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(postData)
-      })
+  const resetForm = () => {
+    setTitle('')
+    setContent('')
+    setExcerpt('')
+    setAuthor('Seokopat Ekibi')
+    setImage('')
+    setTags('')
+    setEditingPost(null)
+  }
 
-      const data = await response.json()
+  const generateSlug = (text: string): string => {
+    return text
+      .toLowerCase()
+      .replace(/ğ/g, 'g')
+      .replace(/ü/g, 'u')
+      .replace(/ş/g, 's')
+      .replace(/ı/g, 'i')
+      .replace(/ö/g, 'o')
+      .replace(/ç/g, 'c')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .trim()
+  }
 
-      if (response.ok) {
-        showNotification('success', data.message)
-        await loadPosts()
-        setShowEditor(false)
-        setEditingPost(null)
-      } else {
-        showNotification('error', data.error || 'Bir hata oluştu')
-      }
-    } catch (error) {
-      showNotification('error', 'Blog yazısı kaydedilemedi')
+  const calculateReadTime = (text: string): string => {
+    const wordsPerMinute = 200
+    const words = text.replace(/<[^>]*>/g, '').split(/\s+/).length
+    const minutes = Math.ceil(words / wordsPerMinute)
+    return `${minutes} dk okuma`
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!title || !content || !excerpt) {
+      alert('Lütfen tüm zorunlu alanları doldurun!')
+      return
     }
-  }
 
-  // Blog yazısı sil
-  const handleDelete = async (id: string) => {
-    try {
-      const response = await fetch(`/api/blog/${id}`, {
-        method: 'DELETE'
-      })
+    const slug = generateSlug(title)
+    const readTime = calculateReadTime(content)
 
-      const data = await response.json()
-
-      if (response.ok) {
-        showNotification('success', data.message)
-        await loadPosts()
-      } else {
-        showNotification('error', data.error || 'Bir hata oluştu')
-      }
-    } catch (error) {
-      showNotification('error', 'Blog yazısı silinemedi')
+    const newPost: BlogPost = {
+      id: editingPost?.id || Date.now().toString(),
+      title,
+      slug,
+      excerpt,
+      content,
+      author,
+      date: editingPost?.date || new Date().toISOString(),
+      image: image || '/blog/default.jpg', // ← Varsayılan değer
+      tags: tags.split(',').map((tag) => tag.trim()).filter((tag) => tag),
+      readTime,
     }
+
+    saveBlogPost(newPost)
+    loadPosts()
+    setView('list')
+    resetForm()
+    alert(editingPost ? 'Yazı güncellendi!' : 'Yeni yazı eklendi!')
   }
 
-  // Düzenleme başlat
   const handleEdit = (post: BlogPost) => {
     setEditingPost(post)
-    setShowEditor(true)
+    setTitle(post.title)
+    setContent(post.content)
+    setExcerpt(post.excerpt)
+    setAuthor(post.author)
+    setImage(post.image)
+    setTags(post.tags.join(', '))
+    setView('edit')
   }
 
-  // Yeni yazı
-  const handleNewPost = () => {
-    setEditingPost(null)
-    setShowEditor(true)
-  }
-
-  // Login başarılı
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true)
+  const handleDelete = (id: string) => {
+    deleteBlogPost(id)
     loadPosts()
+    alert('Yazı silindi!')
   }
 
-  // Loading durumu
-  if (loading) {
+  const handleCancel = () => {
+    setView('list')
+    resetForm()
+  }
+
+  // Login screen
+  if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Yükleniyor...</p>
-        </div>
+      <div className="min-h-screen bg-gradient-to-br from-seokopat-navy to-seokopat-primary flex items-center justify-center p-6">
+        <LoginForm onLogin={handleLogin} />
       </div>
     )
   }
 
-  // Giriş sayfası
-  if (!isLoggedIn) {
-    return <LoginForm onLogin={handleLoginSuccess} />
-  }
-
   return (
     <div className="min-h-screen bg-gray-50">
-      <AdminNavbar 
-        onNewPost={handleNewPost} 
-        showNewButton={!showEditor}
-      />
-      
-      {/* Bildirimler */}
-      {notification && (
-        <div className="fixed top-20 right-4 z-50">
-          <div className={`px-6 py-3 rounded-lg shadow-lg ${
-            notification.type === 'success' 
-              ? 'bg-green-500 text-white' 
-              : 'bg-red-500 text-white'
-          }`}>
-            {notification.message}
+      <AdminNavbar onLogout={handleLogout} />
+
+      <main className="container mx-auto px-6 py-8">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h1 className="text-3xl font-bold text-seokopat-navy">
+              {view === 'list' && 'Blog Yönetimi'}
+              {view === 'create' && 'Yeni Blog Yazısı'}
+              {view === 'edit' && 'Blog Yazısını Düzenle'}
+            </h1>
+            <p className="text-gray-600 mt-2">
+              {view === 'list' && `Toplam ${posts.length} yazı`}
+              {view === 'create' && 'Yeni bir blog yazısı oluşturun'}
+              {view === 'edit' && 'Mevcut yazıyı düzenleyin'}
+            </p>
           </div>
+
+          {view === 'list' && (
+            <button
+              onClick={() => setView('create')}
+              className="px-6 py-3 bg-seokopat-primary text-white font-medium rounded-lg hover:bg-seokopat-secondary transition-colors"
+            >
+              + Yeni Yazı Ekle
+            </button>
+          )}
         </div>
-      )}
-      
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Blog Yönetimi</h1>
-          <p className="text-gray-600 mt-2">
-            Blog yazılarınızı buradan yönetebilirsiniz
-          </p>
-        </div>
-        
-        <PostList 
-          posts={posts}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
-        />
+
+        {/* List View */}
+        {view === 'list' && (
+          <PostList posts={posts} onEdit={handleEdit} onDelete={handleDelete} />
+        )}
+
+        {/* Create/Edit Form */}
+        {(view === 'create' || view === 'edit') && (
+          <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8">
+            {/* Title */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Başlık *
+              </label>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-seokopat-primary focus:border-transparent"
+                placeholder="Blog yazısının başlığı..."
+                required
+              />
+            </div>
+
+            {/* Excerpt */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Özet *
+              </label>
+              <textarea
+                value={excerpt}
+                onChange={(e) => setExcerpt(e.target.value)}
+                rows={3}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-seokopat-primary focus:border-transparent"
+                placeholder="Kısa açıklama (1-2 cümle)..."
+                required
+              />
+            </div>
+
+            {/* Content */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                İçerik *
+              </label>
+              <ReactQuill
+                value={content}
+                onChange={setContent}
+                className="bg-white"
+                theme="snow"
+                modules={{
+                  toolbar: [
+                    [{ header: [2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ list: 'ordered' }, { list: 'bullet' }],
+                    ['link'],
+                    ['clean'],
+                  ],
+                }}
+              />
+            </div>
+
+            {/* Author */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Yazar
+              </label>
+              <input
+                type="text"
+                value={author}
+                onChange={(e) => setAuthor(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-seokopat-primary focus:border-transparent"
+                placeholder="Yazar adı..."
+              />
+            </div>
+
+            {/* Image URL */}
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Görsel URL (Opsiyonel)
+              </label>
+              <input
+                type="text"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-seokopat-primary focus:border-transparent"
+                placeholder="https://example.com/image.jpg"
+              />
+            </div>
+
+            {/* Tags */}
+            <div className="mb-8">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Etiketler
+              </label>
+              <input
+                type="text"
+                value={tags}
+                onChange={(e) => setTags(e.target.value)}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-seokopat-primary focus:border-transparent"
+                placeholder="SEO, E-ticaret, Shopify (virgülle ayırın)"
+              />
+            </div>
+
+            {/* Actions */}
+            <div className="flex gap-4">
+              <button
+                type="submit"
+                className="flex-1 px-6 py-3 bg-seokopat-primary text-white font-medium rounded-lg hover:bg-seokopat-secondary transition-colors"
+              >
+                {editingPost ? 'Güncelle' : 'Yayınla'}
+              </button>
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                İptal
+              </button>
+            </div>
+          </form>
+        )}
       </main>
-      
-      {/* Editor Modal */}
-      {showEditor && (
-        <PostEditor
-          post={editingPost}
-          onSave={handleSave}
-          onCancel={() => {
-            setShowEditor(false)
-            setEditingPost(null)
-          }}
-        />
-      )}
     </div>
   )
 }
