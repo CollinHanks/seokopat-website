@@ -64,66 +64,74 @@ const milestones = [
   { 
     year: '2018', 
     title: 'Kuruluş', 
-    description: 'İlk müşterilerimizle dijital dönüşüm yolculuğuna başladık',
+    description: 'Dijital dönüşüm yolculuğuna başladık',
     metric: '10 müşteri',
-    color: 'from-pink-500 to-rose-500',
-    glowColor: 'rgba(236, 72, 153, 0.5)'
+    gradient: 'from-pink-500 via-rose-500 to-pink-600',
+    bgGradient: 'from-pink-500/10 to-rose-500/5',
+    shadow: 'shadow-pink-500/50'
   },
   { 
     year: '2019', 
     title: 'Büyüme', 
-    description: 'İlk yılımızda 100 müşteri barajını aştık',
+    description: '100 müşteri barajını aştık',
     metric: '100+ müşteri',
-    color: 'from-purple-500 to-pink-500',
-    glowColor: 'rgba(168, 85, 247, 0.5)'
+    gradient: 'from-purple-500 via-fuchsia-500 to-purple-600',
+    bgGradient: 'from-purple-500/10 to-fuchsia-500/5',
+    shadow: 'shadow-purple-500/50'
   },
   { 
     year: '2020', 
-    title: 'E-Ticaret Dönemi', 
-    description: 'Pandemi döneminde e-ticaret çözümlerine odaklandık',
+    title: 'E-Ticaret', 
+    description: 'E-ticaret çözümlerine odaklandık',
     metric: '200% büyüme',
-    color: 'from-blue-500 to-purple-500',
-    glowColor: 'rgba(59, 130, 246, 0.5)'
+    gradient: 'from-blue-500 via-cyan-500 to-blue-600',
+    bgGradient: 'from-blue-500/10 to-cyan-500/5',
+    shadow: 'shadow-blue-500/50'
   },
   { 
     year: '2021', 
     title: 'SaaS Ürünler', 
-    description: 'Squezzly ve Stokmatic uygulamalarını geliştirdik',
-    metric: '3 SaaS ürün',
-    color: 'from-cyan-500 to-blue-500',
-    glowColor: 'rgba(6, 182, 212, 0.5)'
+    description: 'Squezzly ve Stokmatic lansmanı',
+    metric: '3 SaaS',
+    gradient: 'from-cyan-500 via-teal-500 to-cyan-600',
+    bgGradient: 'from-cyan-500/10 to-teal-500/5',
+    shadow: 'shadow-cyan-500/50'
   },
   { 
     year: '2022', 
-    title: 'Sektör Liderliği', 
-    description: 'Türkiye\'nin önde gelen dijital ajansları arasına girdik',
+    title: 'Liderlik', 
+    description: 'Sektör liderleri arasına girdik',
     metric: '500+ müşteri',
-    color: 'from-green-500 to-cyan-500',
-    glowColor: 'rgba(34, 197, 94, 0.5)'
+    gradient: 'from-green-500 via-emerald-500 to-green-600',
+    bgGradient: 'from-green-500/10 to-emerald-500/5',
+    shadow: 'shadow-green-500/50'
   },
   { 
     year: '2023', 
-    title: 'AI Entegrasyonu', 
-    description: 'Tüm hizmetlerimize yapay zeka teknolojilerini entegre ettik',
+    title: 'AI Dönemi', 
+    description: 'Yapay zeka entegrasyonları',
     metric: 'AI-powered',
-    color: 'from-yellow-500 to-green-500',
-    glowColor: 'rgba(234, 179, 8, 0.5)'
+    gradient: 'from-yellow-500 via-amber-500 to-yellow-600',
+    bgGradient: 'from-yellow-500/10 to-amber-500/5',
+    shadow: 'shadow-yellow-500/50'
   },
   { 
     year: '2024', 
-    title: 'Global Vizyon', 
-    description: 'Avrupa pazarına açılma hazırlıklarına başladık',
-    metric: 'EU expansion',
-    color: 'from-orange-500 to-yellow-500',
-    glowColor: 'rgba(249, 115, 22, 0.5)'
+    title: 'Global', 
+    description: 'Avrupa pazarına açılma',
+    metric: 'EU ready',
+    gradient: 'from-orange-500 via-red-500 to-orange-600',
+    bgGradient: 'from-orange-500/10 to-red-500/5',
+    shadow: 'shadow-orange-500/50'
   },
   { 
     year: '2025', 
-    title: 'Yeni Ufuklar', 
-    description: 'Tagdio lansmanı ve kurumsal müşteri odağı',
+    title: 'Enterprise', 
+    description: 'Kurumsal müşteri odağı',
     metric: 'Enterprise',
-    color: 'from-red-500 to-orange-500',
-    glowColor: 'rgba(239, 68, 68, 0.5)'
+    gradient: 'from-red-500 via-pink-500 to-red-600',
+    bgGradient: 'from-red-500/10 to-pink-500/5',
+    shadow: 'shadow-red-500/50'
   },
 ]
 
@@ -279,156 +287,147 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Journey Section - ULTRA MODERN COMPACT TIMELINE */}
-      <section id="yolculugumuz" className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-black py-16 sm:py-20 lg:py-24 overflow-hidden">
-        {/* Animated Grid Background */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px'
-          }} />
+      {/* Journey Section - BENTO BOX GRID (NO TIMELINE) */}
+      <section id="yolculugumuz" className="relative bg-gradient-to-br from-gray-50 via-white to-gray-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* Decorative Background */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-0 w-96 h-96 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full blur-3xl" />
         </div>
 
-        {/* Neon Glow Effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 -left-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 -right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        </div>
-
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12 sm:mb-16">
-            <div className="inline-flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6">
-              <div className="w-2 h-2 bg-pink-500 rounded-full animate-pulse" />
-              <span className="text-xs sm:text-sm font-bold text-white">7 Yıllık Evrim</span>
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-100 to-purple-100 rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6">
+              <SparklesIcon className="h-4 w-4 sm:h-5 sm:w-5 text-pink-600" />
+              <span className="text-xs sm:text-sm font-bold text-pink-900">2018 - 2025</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 sm:mb-6">
-              Yolculuğumuz
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4 sm:mb-6">
+              7 Yıllık Evrim
             </h2>
-            <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto px-4">
-              2018'den bugüne kesintisiz büyüme ve inovasyon
+            <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
+              Sürekli büyüyen, gelişen ve yenilik yapan bir ekip
             </p>
           </div>
 
-          {/* Timeline - Desktop Version */}
-          <div className="hidden lg:block relative max-w-4xl mx-auto">
-            {/* Central Gradient Line */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-500 via-purple-500 via-blue-500 to-cyan-500 transform -translate-x-1/2" />
-
-            {/* Timeline Items */}
-            <div className="space-y-6">
-              {milestones.map((milestone, index) => {
-                const isLeft = index % 2 === 0
-                return (
-                  <div 
-                    key={index}
-                    className={`relative flex items-center ${isLeft ? 'justify-start' : 'justify-end'}`}
-                  >
-                    {/* Glassmorphic Card */}
-                    <div className={`w-[45%] ${isLeft ? 'pr-8' : 'pl-8'}`}>
-                      <div 
-                        className="group relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all hover:scale-[1.02] cursor-pointer"
-                        style={{
-                          boxShadow: `0 0 30px ${milestone.glowColor}`
-                        }}
-                      >
-                        {/* Neon Border Effect */}
-                        <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${milestone.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
-                        
-                        <div className="relative">
-                          {/* Year Badge */}
-                          <div className="flex items-center justify-between mb-3">
-                            <span className={`text-2xl font-black bg-gradient-to-r ${milestone.color} bg-clip-text text-transparent`}>
-                              {milestone.year}
-                            </span>
-                            <div className={`px-3 py-1 bg-gradient-to-r ${milestone.color} rounded-full`}>
-                              <span className="text-xs font-bold text-white">
-                                {milestone.metric}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Content */}
-                          <h3 className="text-lg font-black text-white mb-2">
-                            {milestone.title}
-                          </h3>
-                          <p className="text-sm text-gray-400 leading-relaxed">
-                            {milestone.description}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Center Dot with Glow */}
-                    <div 
-                      className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-2 border-gray-900 z-10 transition-all group-hover:scale-125"
-                      style={{
-                        background: `linear-gradient(135deg, ${milestone.glowColor}, ${milestone.glowColor})`,
-                        boxShadow: `0 0 20px ${milestone.glowColor}`
-                      }}
-                    />
+          {/* Bento Box Grid - Desktop (2x4) */}
+          <div className="hidden lg:grid grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {milestones.map((milestone, index) => (
+              <div
+                key={index}
+                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent hover:shadow-2xl ${milestone.shadow} transition-all duration-300 hover:scale-105 hover:-translate-y-2`}
+                style={{
+                  transformStyle: 'preserve-3d',
+                }}
+              >
+                {/* Gradient Border Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl`} />
+                
+                <div className="relative">
+                  {/* Year Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-3xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                      {milestone.year}
+                    </span>
                   </div>
-                )
-              })}
-            </div>
-          </div>
 
-          {/* Timeline - Mobile/Tablet Version */}
-          <div className="lg:hidden relative max-w-xl mx-auto pl-8">
-            {/* Left Gradient Line */}
-            <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-500 via-purple-500 via-blue-500 to-cyan-500" />
+                  {/* Title */}
+                  <h3 className="text-xl font-black text-gray-900 mb-3">
+                    {milestone.title}
+                  </h3>
 
-            {/* Timeline Items */}
-            <div className="space-y-6">
-              {milestones.map((milestone, index) => (
-                <div key={index} className="relative">
-                  {/* Dot with Glow */}
-                  <div 
-                    className="absolute -left-[1.35rem] top-4 w-3 h-3 rounded-full border-2 border-gray-900 z-10"
-                    style={{
-                      background: `linear-gradient(135deg, ${milestone.glowColor}, ${milestone.glowColor})`,
-                      boxShadow: `0 0 15px ${milestone.glowColor}`
-                    }}
-                  />
+                  {/* Description */}
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {milestone.description}
+                  </p>
 
-                  {/* Glassmorphic Card */}
-                  <div 
-                    className="group relative bg-white/5 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:border-white/20 transition-all hover:scale-[1.01]"
-                    style={{
-                      boxShadow: `0 0 20px ${milestone.glowColor}`
-                    }}
-                  >
-                    {/* Neon Border Effect */}
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${milestone.color} opacity-0 group-hover:opacity-10 transition-opacity`} />
-                    
-                    <div className="relative">
-                      {/* Year Badge */}
-                      <div className="flex items-center justify-between mb-3">
-                        <span className={`text-xl sm:text-2xl font-black bg-gradient-to-r ${milestone.color} bg-clip-text text-transparent`}>
-                          {milestone.year}
-                        </span>
-                        <div className={`px-3 py-1 bg-gradient-to-r ${milestone.color} rounded-full`}>
-                          <span className="text-xs font-bold text-white">
-                            {milestone.metric}
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <h3 className="text-base sm:text-lg font-black text-white mb-2">
-                        {milestone.title}
-                      </h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">
-                        {milestone.description}
-                      </p>
-                    </div>
+                  {/* Metric Badge */}
+                  <div className={`inline-block px-4 py-2 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                    <span className="text-white font-bold text-xs">
+                      {milestone.metric}
+                    </span>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bento Box Grid - Tablet (2x4) */}
+          <div className="hidden sm:grid lg:hidden grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {milestones.map((milestone, index) => (
+              <div
+                key={index}
+                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent hover:shadow-2xl ${milestone.shadow} transition-all duration-300 hover:scale-105 hover:-translate-y-2`}
+              >
+                {/* Gradient Border Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl`} />
+                
+                <div className="relative">
+                  {/* Year Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-2xl sm:text-3xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                      {milestone.year}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3">
+                    {milestone.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {milestone.description}
+                  </p>
+
+                  {/* Metric Badge */}
+                  <div className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                    <span className="text-white font-bold text-xs">
+                      {milestone.metric}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bento Box Grid - Mobile (1 column) */}
+          <div className="sm:hidden grid grid-cols-1 gap-6 max-w-md mx-auto">
+            {milestones.map((milestone, index) => (
+              <div
+                key={index}
+                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent hover:shadow-2xl ${milestone.shadow} transition-all duration-300 hover:scale-105`}
+              >
+                {/* Gradient Border Effect */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl`} />
+                
+                <div className="relative">
+                  {/* Year Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-2xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                      {milestone.year}
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-black text-gray-900 mb-3">
+                    {milestone.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                    {milestone.description}
+                  </p>
+
+                  {/* Metric Badge */}
+                  <div className={`inline-block px-3 py-1.5 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                    <span className="text-white font-bold text-xs">
+                      {milestone.metric}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
