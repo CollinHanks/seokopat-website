@@ -65,81 +65,81 @@ const milestones = [
     year: '2018', 
     title: 'Kuruluş', 
     shortDesc: 'Dijital dönüşüm yolculuğuna başladık',
-    fullDesc: 'İlk müşterilerimizle dijital dönüşüm yolculuğuna başladık. Küçük ve orta ölçekli işletmelere SEO, web tasarım ve dijital pazarlama hizmetleri sunarak sektörde yerimizi aldık. İlk 10 müşterimizle güven ve kalite temelli çalışma prensibimizi oluşturduk.',
+    fullDesc: 'İlk müşterilerimizle dijital dönüşüm yolculuğuna başladık. Küçük ve orta ölçekli işletmelere SEO, web tasarım ve dijital pazarlama hizmetleri sunduk.',
     metric: '10 müşteri',
     gradient: 'from-pink-500 via-rose-500 to-pink-600',
     bgGradient: 'from-pink-500/10 to-rose-500/5',
-    shadow: 'shadow-pink-500/50'
+    darkGradient: 'from-pink-600 to-rose-600'
   },
   { 
     year: '2019', 
     title: 'Büyüme', 
     shortDesc: '100 müşteri barajını aştık',
-    fullDesc: 'İlk yılımızda 100 müşteri barajını aşarak hızlı bir büyüme kaydettik. E-ticaret, kurumsal web siteleri ve SEO projelerinde uzmanlaşarak müşteri portföyümüzü genişlettik. Referans başarılarımızla sektörde tanınan bir marka haline geldik.',
+    fullDesc: 'İlk yılımızda 100 müşteri barajını aşarak hızlı büyüme kaydettik. E-ticaret ve SEO projelerinde uzmanlaşarak portföyümüzü genişlettik.',
     metric: '100+ müşteri',
     gradient: 'from-purple-500 via-fuchsia-500 to-purple-600',
     bgGradient: 'from-purple-500/10 to-fuchsia-500/5',
-    shadow: 'shadow-purple-500/50'
+    darkGradient: 'from-purple-600 to-fuchsia-600'
   },
   { 
     year: '2020', 
     title: 'E-Ticaret Dönemi', 
     shortDesc: 'E-ticaret çözümlerine odaklandık',
-    fullDesc: 'Pandemi döneminde e-ticaret patlamasıyla birlikte bu alana yoğunlaştık. Shopify, Trendyol, N11 ve Hepsiburada gibi platformlarda entegrasyon ve optimizasyon hizmetleri sunduk. Müşterilerimizin online satışlarında ortalama %200 artış sağladık.',
+    fullDesc: 'Pandemi döneminde e-ticaret patlamasıyla bu alana yoğunlaştık. Shopify, Trendyol entegrasyonlarında müşteri satışlarını ortalama %200 artırdık.',
     metric: '200% büyüme',
     gradient: 'from-blue-500 via-cyan-500 to-blue-600',
     bgGradient: 'from-blue-500/10 to-cyan-500/5',
-    shadow: 'shadow-blue-500/50'
+    darkGradient: 'from-blue-600 to-cyan-600'
   },
   { 
     year: '2021', 
     title: 'SaaS Ürünler', 
     shortDesc: 'Squezzly ve Stokmatic lansmanı',
-    fullDesc: 'Müşterilerimizin ihtiyaçlarını analiz ederek kendi SaaS ürünlerimizi geliştirdik. Squezzly ile e-ticaret analitik, Stokmatic ile stok yönetimi çözümlerini hayata geçirdik. Kendi ürünlerimizle teknoloji şirketi kimliğimizi pekiştirdik.',
+    fullDesc: 'Müşteri ihtiyaçlarını analiz ederek kendi SaaS ürünlerimizi geliştirdik. Squezzly ile e-ticaret analitik, Stokmatic ile stok yönetimi çözümleri yarattık.',
     metric: '3 SaaS ürün',
     gradient: 'from-cyan-500 via-teal-500 to-cyan-600',
     bgGradient: 'from-cyan-500/10 to-teal-500/5',
-    shadow: 'shadow-cyan-500/50'
+    darkGradient: 'from-cyan-600 to-teal-600'
   },
   { 
     year: '2022', 
     title: 'Sektör Liderliği', 
     shortDesc: 'Sektör liderleri arasına girdik',
-    fullDesc: 'Türkiye\'nin önde gelen dijital ajansları arasına girdik. 500+ aktif müşteri portföyü, 1500+ tamamlanmış proje ve %95 müşteri memnuniyeti oranıyla sektörde lider konuma yükseldik. Kurumsal müşterilerle çalışmaya başladık ve ekibimizi genişlettik.',
+    fullDesc: 'Türkiye\'nin önde gelen dijital ajansları arasına girdik. 500+ aktif müşteri, 1500+ proje ve %95 memnuniyet oranıyla lider konuma yükseldik.',
     metric: '500+ müşteri',
     gradient: 'from-green-500 via-emerald-500 to-green-600',
     bgGradient: 'from-green-500/10 to-emerald-500/5',
-    shadow: 'shadow-green-500/50'
+    darkGradient: 'from-green-600 to-emerald-600'
   },
   { 
     year: '2023', 
     title: 'AI Dönemi', 
     shortDesc: 'Yapay zeka entegrasyonları',
-    fullDesc: 'Yapay zeka teknolojilerini tüm hizmetlerimize entegre ettik. AI destekli içerik üretimi, SEO optimizasyonu, müşteri analizi ve otomasyon çözümleri geliştirdik. ChatGPT, Midjourney ve diğer AI araçlarını iş süreçlerimize dahil ederek verimliliği artırdık.',
+    fullDesc: 'Yapay zeka teknolojilerini tüm hizmetlerimize entegre ettik. AI destekli içerik üretimi, SEO optimizasyonu ve otomasyon çözümleri geliştirdik.',
     metric: 'AI-powered',
     gradient: 'from-yellow-500 via-amber-500 to-yellow-600',
     bgGradient: 'from-yellow-500/10 to-amber-500/5',
-    shadow: 'shadow-yellow-500/50'
+    darkGradient: 'from-yellow-600 to-amber-600'
   },
   { 
     year: '2024', 
     title: 'Global Vizyon', 
     shortDesc: 'Avrupa pazarına açılma',
-    fullDesc: 'Avrupa pazarına açılma stratejimizi hayata geçirdik. Uluslararası e-ticaret platformları, çok dilli SEO hizmetleri ve global dijital pazarlama çözümleriyle yurt dışı müşterilere hizmet vermeye başladık. AB standartlarında hizmet kalitesini yakaladık.',
+    fullDesc: 'Avrupa pazarına açıldık. Uluslararası e-ticaret, çok dilli SEO ve global dijital pazarlama çözümleriyle yurt dışı müşterilere hizmet vermeye başladık.',
     metric: 'EU expansion',
     gradient: 'from-orange-500 via-red-500 to-orange-600',
     bgGradient: 'from-orange-500/10 to-red-500/5',
-    shadow: 'shadow-orange-500/50'
+    darkGradient: 'from-orange-600 to-red-600'
   },
   { 
     year: '2025', 
     title: 'Enterprise Odak', 
     shortDesc: 'Kurumsal müşteri odağı',
-    fullDesc: 'Tagdio lansmanı ve kurumsal müşteri odağına geçiş yaptık. Fortune 500 şirketleri ve büyük ölçekli işletmeler için enterprise çözümler geliştirdik. Özel yazılım projeleri, kurumsal danışmanlık ve stratejik partnerliklerle yeni bir döneme girdik.',
+    fullDesc: 'Tagdio lansmanı ve kurumsal odağa geçiş yaptık. Fortune 500 şirketleri için enterprise çözümler, özel yazılım projeleri ve stratejik partnerlikler geliştirdik.',
     metric: 'Enterprise',
     gradient: 'from-red-500 via-pink-500 to-red-600',
     bgGradient: 'from-red-500/10 to-pink-500/5',
-    shadow: 'shadow-red-500/50'
+    darkGradient: 'from-red-600 to-pink-600'
   },
 ]
 
@@ -295,7 +295,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Journey Section - HOVER EXPANDABLE CARDS */}
+      {/* Journey Section - FIXED HOVER WITH WHITE TEXT */}
       <section id="yolculugumuz" className="relative bg-gradient-to-br from-gray-50 via-white to-gray-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
         {/* Decorative Background */}
         <div className="absolute inset-0 opacity-5">
@@ -318,21 +318,15 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Expandable Cards Grid - Desktop (4 columns) */}
+          {/* Desktop (4 columns) */}
           <div className="hidden lg:grid grid-cols-4 gap-6 max-w-6xl mx-auto">
             {milestones.map((milestone, index) => (
               <div
                 key={index}
-                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden`}
-                style={{
-                  transformStyle: 'preserve-3d',
-                }}
+                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden min-h-[280px] flex flex-col"
               >
-                {/* Gradient Glow on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl ${milestone.shadow}`} />
-                
-                {/* Default State (Compact) */}
-                <div className="relative transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
+                {/* Normal State Content */}
+                <div className="relative z-10 flex-1 flex flex-col transition-all duration-500 group-hover:opacity-0">
                   <div className="flex items-center justify-between mb-4">
                     <span className={`text-3xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
                       {milestone.year}
@@ -341,32 +335,32 @@ export default function AboutPage() {
                   <h3 className="text-xl font-black text-gray-900 mb-3">
                     {milestone.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2">
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed flex-1">
                     {milestone.shortDesc}
                   </p>
-                  <div className={`inline-block px-4 py-2 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                  <div className={`inline-block px-4 py-2 bg-gradient-to-r ${milestone.gradient} rounded-full self-start`}>
                     <span className="text-white font-bold text-xs">
                       {milestone.metric}
                     </span>
                   </div>
                 </div>
 
-                {/* Hover State (Expanded with Full Info) */}
-                <div className="absolute inset-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-100 scale-95">
+                {/* Hover State - Dark Gradient Background with White Text */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.darkGradient} opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-3xl p-6 flex flex-col`}>
                   <div className="flex items-center justify-between mb-3">
-                    <span className={`text-2xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                    <span className="text-2xl font-black text-white">
                       {milestone.year}
                     </span>
-                    <div className={`px-3 py-1 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                    <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
                       <span className="text-white font-bold text-xs">
                         {milestone.metric}
                       </span>
                     </div>
                   </div>
-                  <h3 className="text-lg font-black text-gray-900 mb-3">
+                  <h3 className="text-lg font-black text-white mb-3">
                     {milestone.title}
                   </h3>
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-white/90 leading-relaxed">
                     {milestone.fullDesc}
                   </p>
                 </div>
@@ -374,17 +368,14 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Expandable Cards Grid - Tablet (2 columns) */}
+          {/* Tablet (2 columns) */}
           <div className="hidden sm:grid lg:hidden grid-cols-2 gap-6 max-w-4xl mx-auto">
             {milestones.map((milestone, index) => (
               <div
                 key={index}
-                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden`}
+                className="group relative bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden min-h-[280px] flex flex-col"
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl ${milestone.shadow}`} />
-                
-                {/* Default State */}
-                <div className="relative transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
+                <div className="relative z-10 flex-1 flex flex-col transition-all duration-500 group-hover:opacity-0">
                   <div className="flex items-center justify-between mb-4">
                     <span className={`text-2xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
                       {milestone.year}
@@ -393,32 +384,31 @@ export default function AboutPage() {
                   <h3 className="text-lg font-black text-gray-900 mb-3">
                     {milestone.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2">
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed flex-1">
                     {milestone.shortDesc}
                   </p>
-                  <div className={`inline-block px-3 py-1.5 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                  <div className={`inline-block px-3 py-1.5 bg-gradient-to-r ${milestone.gradient} rounded-full self-start`}>
                     <span className="text-white font-bold text-xs">
                       {milestone.metric}
                     </span>
                   </div>
                 </div>
 
-                {/* Hover State */}
-                <div className="absolute inset-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.darkGradient} opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-3xl p-6 flex flex-col`}>
                   <div className="flex items-center justify-between mb-3">
-                    <span className={`text-xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                    <span className="text-xl font-black text-white">
                       {milestone.year}
                     </span>
-                    <div className={`px-3 py-1 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                    <div className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full">
                       <span className="text-white font-bold text-xs">
                         {milestone.metric}
                       </span>
                     </div>
                   </div>
-                  <h3 className="text-base font-black text-gray-900 mb-2">
+                  <h3 className="text-base font-black text-white mb-2">
                     {milestone.title}
                   </h3>
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-white/90 leading-relaxed">
                     {milestone.fullDesc}
                   </p>
                 </div>
@@ -426,27 +416,27 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Mobile (1 column) - Always Expanded */}
+          {/* Mobile (1 column) - Always show full content, no hover */}
           <div className="sm:hidden grid grid-cols-1 gap-6 max-w-md mx-auto">
             {milestones.map((milestone, index) => (
               <div
                 key={index}
-                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200`}
+                className={`relative bg-gradient-to-br ${milestone.darkGradient} rounded-3xl p-6 border-2 border-transparent shadow-lg`}
               >
                 <div className="flex items-center justify-between mb-4">
-                  <span className={`text-2xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                  <span className="text-2xl font-black text-white">
                     {milestone.year}
                   </span>
-                  <div className={`px-3 py-1.5 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                  <div className="px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-full">
                     <span className="text-white font-bold text-xs">
                       {milestone.metric}
                     </span>
                   </div>
                 </div>
-                <h3 className="text-lg font-black text-gray-900 mb-3">
+                <h3 className="text-lg font-black text-white mb-3">
                   {milestone.title}
                 </h3>
-                <p className="text-sm text-gray-700 leading-relaxed">
+                <p className="text-sm text-white/90 leading-relaxed">
                   {milestone.fullDesc}
                 </p>
               </div>
@@ -491,9 +481,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Testimonials - GRADIENT Background */}
+      {/* Testimonials */}
       <section className="relative bg-gradient-to-br from-purple-900 via-pink-900 to-blue-900 py-16 sm:py-20 lg:py-24 text-white overflow-hidden">
-        {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-96 h-96 bg-pink-500 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
@@ -519,26 +508,19 @@ export default function AboutPage() {
                 key={index}
                 className="bg-white/10 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/20 hover:bg-white/20 transition-all hover:scale-105"
               >
-                {/* Stars */}
                 <div className="flex mb-4 sm:mb-6">
                   {[...Array(testimonial.rating)].map((_, i) => (
                     <StarIcon key={i} className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-
-                {/* Quote */}
                 <p className="text-gray-100 mb-4 sm:mb-6 text-sm sm:text-lg leading-relaxed italic">
                   "{testimonial.comment}"
                 </p>
-
-                {/* Result Badge */}
                 <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full mb-4 sm:mb-6">
                   <span className="text-white font-bold text-xs sm:text-sm">
                     {testimonial.result}
                   </span>
                 </div>
-
-                {/* Company Info */}
                 <div className="pt-4 sm:pt-6 border-t border-white/20">
                   <div className="font-bold text-white text-base sm:text-lg">
                     {testimonial.company}
@@ -553,11 +535,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission & Vision - Split Screen */}
+      {/* Mission & Vision */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
-          
-          {/* Mission */}
           <div className="relative bg-gradient-to-br from-pink-50 to-white rounded-2xl sm:rounded-3xl p-8 sm:p-12 shadow-2xl overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-pink-400 to-rose-400 rounded-full blur-3xl opacity-20" />
             <div className="relative">
@@ -589,7 +569,6 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Vision */}
           <div className="relative bg-gradient-to-br from-blue-50 to-white rounded-2xl sm:rounded-3xl p-8 sm:p-12 shadow-2xl overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full blur-3xl opacity-20" />
             <div className="relative">
@@ -623,9 +602,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Final CTA - Epic */}
+      {/* Final CTA */}
       <section className="relative bg-gradient-to-br from-pink-600 via-purple-600 to-blue-600 py-16 sm:py-20 lg:py-24 overflow-hidden">
-        {/* Animated Background */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
@@ -664,7 +642,6 @@ export default function AboutPage() {
             </Link>
           </div>
 
-          {/* Trust Indicators */}
           <div className="mt-12 sm:mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 max-w-4xl mx-auto">
             <div className="text-center">
               <div className="text-2xl sm:text-3xl font-black mb-1 sm:mb-2">500+</div>
