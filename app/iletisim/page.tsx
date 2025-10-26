@@ -62,20 +62,20 @@ export default function ContactPage() {
     })
   }
 
-  // Contact info - BOMONTI ŞİŞLİ
+  // Contact info - SINPAŞ QUEEN RESIDENCE, BOMONTİ
   const contactInfo = {
     phone: '+90 540 848 48 34',
     phoneClean: '905408484834',
     phoneDisplay: '+90 (540) 848 48 34',
     email: 'hello@seokopat.com',
     address: {
-      street: 'Bomonti',
+      building: 'Bomonti Sinpaş Queen Residence',
+      street: 'Cumhuriyet, İncirli Dede Cd. No:8',
       district: 'Şişli',
       city: 'İstanbul',
-      country: 'Türkiye',
-      postalCode: '34381',
-      fullAddress: 'Bomonti, Şişli 34381 İstanbul, Türkiye',
-      // Bomonti'nin gerçek koordinatları
+      postalCode: '34380',
+      fullAddress: 'Bomonti Sinpaş Queen Residence, Cumhuriyet, İncirli Dede Cd. No:8, 34380 Şişli/İstanbul',
+      // Sinpaş Queen Residence Bomonti koordinatları
       lat: 41.0588,
       lng: 28.9867
     },
@@ -398,81 +398,87 @@ export default function ContactPage() {
           {/* RIGHT: SIDEBAR - 1 Column */}
           <div className="space-y-6 lg:space-y-8">
             
-            {/* Contact Info Card */}
-            <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl shadow-2xl p-6 sm:p-8 text-white border-2 border-gray-700">
-              <h3 className="text-2xl font-black mb-6 flex items-center gap-2">
-                <BuildingOfficeIcon className="h-7 w-7 text-purple-400" />
-                İletişim Bilgileri
-              </h3>
+            {/* Contact Info Card - COLORFUL GRADIENT */}
+            <div className="relative bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 rounded-3xl shadow-2xl p-6 sm:p-8 text-white border-2 border-purple-400 overflow-hidden">
+              {/* Decorative Orbs */}
+              <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
+              <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/10 rounded-full blur-3xl" />
               
-              <div className="space-y-5">
+              <div className="relative">
+                <h3 className="text-2xl font-black mb-6 flex items-center gap-2">
+                  <BuildingOfficeIcon className="h-7 w-7" />
+                  İletişim Bilgileri
+                </h3>
                 
-                {/* Phone */}
-                <a 
-                  href={`tel:${contactInfo.phoneClean}`}
-                  className="flex items-start gap-4 group"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg">
-                    <PhoneIcon className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-black text-white group-hover:text-green-400 transition-colors mb-1">
-                      Telefon
+                <div className="space-y-5">
+                  
+                  {/* Phone */}
+                  <a 
+                    href={`tel:${contactInfo.phoneClean}`}
+                    className="flex items-start gap-4 group"
+                  >
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-white/30 transition-all shadow-lg">
+                      <PhoneIcon className="h-6 w-6 text-white" />
                     </div>
-                    <div className="text-gray-300 text-sm font-semibold">
-                      {contactInfo.phoneDisplay}
+                    <div>
+                      <div className="font-black text-white group-hover:text-yellow-300 transition-colors mb-1">
+                        Telefon
+                      </div>
+                      <div className="text-white/90 text-sm font-semibold">
+                        {contactInfo.phoneDisplay}
+                      </div>
+                    </div>
+                  </a>
+                  
+                  {/* Email */}
+                  <a 
+                    href={`mailto:${contactInfo.email}`}
+                    className="flex items-start gap-4 group"
+                  >
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-white/30 transition-all shadow-lg">
+                      <EnvelopeIcon className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-black text-white group-hover:text-yellow-300 transition-colors mb-1">
+                        E-posta
+                      </div>
+                      <div className="text-white/90 text-sm font-semibold">
+                        {contactInfo.email}
+                      </div>
+                    </div>
+                  </a>
+                  
+                  {/* Address with Building Name */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <MapPinIcon className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <div className="font-black text-white mb-1">
+                        Adres
+                      </div>
+                      <div className="text-white/90 text-sm font-semibold leading-relaxed">
+                        {contactInfo.address.building}<br />
+                        {contactInfo.address.street}<br />
+                        {contactInfo.address.postalCode} {contactInfo.address.district}/{contactInfo.address.city}
+                      </div>
                     </div>
                   </div>
-                </a>
-                
-                {/* Email */}
-                <a 
-                  href={`mailto:${contactInfo.email}`}
-                  className="flex items-start gap-4 group"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-lg">
-                    <EnvelopeIcon className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-black text-white group-hover:text-blue-400 transition-colors mb-1">
-                      E-posta
+                  
+                  {/* Hours */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                      <ClockIcon className="h-6 w-6 text-white" />
                     </div>
-                    <div className="text-gray-300 text-sm font-semibold">
-                      {contactInfo.email}
-                    </div>
-                  </div>
-                </a>
-                
-                {/* Address with Postal Code */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <MapPinIcon className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-black text-white mb-1">
-                      Adres
-                    </div>
-                    <div className="text-gray-300 text-sm font-semibold leading-relaxed">
-                      {contactInfo.address.street}<br />
-                      {contactInfo.address.district} {contactInfo.address.postalCode}<br />
-                      {contactInfo.address.city}, {contactInfo.address.country}
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Hours */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <ClockIcon className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <div className="font-black text-white mb-1">
-                      Çalışma Saatleri
-                    </div>
-                    <div className="text-gray-300 text-sm space-y-1 font-semibold">
-                      <div>{contactInfo.hours.weekday}</div>
-                      <div>{contactInfo.hours.saturday}</div>
-                      <div className="text-red-400">{contactInfo.hours.sunday}</div>
+                    <div>
+                      <div className="font-black text-white mb-1">
+                        Çalışma Saatleri
+                      </div>
+                      <div className="text-white/90 text-sm space-y-1 font-semibold">
+                        <div>{contactInfo.hours.weekday}</div>
+                        <div>{contactInfo.hours.saturday}</div>
+                        <div className="text-yellow-300">{contactInfo.hours.sunday}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -540,7 +546,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* GOOGLE MAPS - BOMONTİ ŞİŞLİ */}
+      {/* GOOGLE MAPS - SINPAŞ QUEEN RESIDENCE */}
       <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -548,7 +554,7 @@ export default function ContactPage() {
           <div className="text-center mb-10 sm:mb-14">
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full px-5 py-2.5 mb-4">
               <MapPinIcon className="h-5 w-5 text-purple-600" />
-              <span className="text-sm font-black text-purple-900">Bomonti, Şişli</span>
+              <span className="text-sm font-black text-purple-900">Sinpaş Queen Residence, Bomonti</span>
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 mb-4">
               Bizi Ziyaret Edin
@@ -570,7 +576,7 @@ export default function ContactPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Seokopat Ofis Konumu - Bomonti Şişli"
+                title="Seokopat Ofis - Sinpaş Queen Residence Bomonti"
                 className="grayscale-[50%] hover:grayscale-0 transition-all duration-700"
               />
             </div>
@@ -610,7 +616,7 @@ export default function ContactPage() {
               { icon: '🚇', title: 'Metro Yakın', desc: '5 dakika yürüme' },
               { icon: '🚗', title: 'Otopark', desc: 'Ücretsiz park' },
               { icon: '☕', title: 'Çevre', desc: 'Cafe & Restaurant' },
-              { icon: '🏢', title: 'Merkezi', desc: 'Şişli iş merkezi' }
+              { icon: '🏢', title: 'Merkezi', desc: 'Bomonti iş merkezi' }
             ].map((item, index) => (
               <div key={index} className="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-purple-500 transition-all hover:shadow-xl text-center group">
                 <div className="text-4xl mb-3 group-hover:scale-125 transition-transform">{item.icon}</div>
