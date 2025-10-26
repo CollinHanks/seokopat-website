@@ -64,7 +64,8 @@ const milestones = [
   { 
     year: '2018', 
     title: 'Kuruluş', 
-    description: 'Dijital dönüşüm yolculuğuna başladık',
+    shortDesc: 'Dijital dönüşüm yolculuğuna başladık',
+    fullDesc: 'İlk müşterilerimizle dijital dönüşüm yolculuğuna başladık. Küçük ve orta ölçekli işletmelere SEO, web tasarım ve dijital pazarlama hizmetleri sunarak sektörde yerimizi aldık. İlk 10 müşterimizle güven ve kalite temelli çalışma prensibimizi oluşturduk.',
     metric: '10 müşteri',
     gradient: 'from-pink-500 via-rose-500 to-pink-600',
     bgGradient: 'from-pink-500/10 to-rose-500/5',
@@ -73,7 +74,8 @@ const milestones = [
   { 
     year: '2019', 
     title: 'Büyüme', 
-    description: '100 müşteri barajını aştık',
+    shortDesc: '100 müşteri barajını aştık',
+    fullDesc: 'İlk yılımızda 100 müşteri barajını aşarak hızlı bir büyüme kaydettik. E-ticaret, kurumsal web siteleri ve SEO projelerinde uzmanlaşarak müşteri portföyümüzü genişlettik. Referans başarılarımızla sektörde tanınan bir marka haline geldik.',
     metric: '100+ müşteri',
     gradient: 'from-purple-500 via-fuchsia-500 to-purple-600',
     bgGradient: 'from-purple-500/10 to-fuchsia-500/5',
@@ -81,8 +83,9 @@ const milestones = [
   },
   { 
     year: '2020', 
-    title: 'E-Ticaret', 
-    description: 'E-ticaret çözümlerine odaklandık',
+    title: 'E-Ticaret Dönemi', 
+    shortDesc: 'E-ticaret çözümlerine odaklandık',
+    fullDesc: 'Pandemi döneminde e-ticaret patlamasıyla birlikte bu alana yoğunlaştık. Shopify, Trendyol, N11 ve Hepsiburada gibi platformlarda entegrasyon ve optimizasyon hizmetleri sunduk. Müşterilerimizin online satışlarında ortalama %200 artış sağladık.',
     metric: '200% büyüme',
     gradient: 'from-blue-500 via-cyan-500 to-blue-600',
     bgGradient: 'from-blue-500/10 to-cyan-500/5',
@@ -91,16 +94,18 @@ const milestones = [
   { 
     year: '2021', 
     title: 'SaaS Ürünler', 
-    description: 'Squezzly ve Stokmatic lansmanı',
-    metric: '3 SaaS',
+    shortDesc: 'Squezzly ve Stokmatic lansmanı',
+    fullDesc: 'Müşterilerimizin ihtiyaçlarını analiz ederek kendi SaaS ürünlerimizi geliştirdik. Squezzly ile e-ticaret analitik, Stokmatic ile stok yönetimi çözümlerini hayata geçirdik. Kendi ürünlerimizle teknoloji şirketi kimliğimizi pekiştirdik.',
+    metric: '3 SaaS ürün',
     gradient: 'from-cyan-500 via-teal-500 to-cyan-600',
     bgGradient: 'from-cyan-500/10 to-teal-500/5',
     shadow: 'shadow-cyan-500/50'
   },
   { 
     year: '2022', 
-    title: 'Liderlik', 
-    description: 'Sektör liderleri arasına girdik',
+    title: 'Sektör Liderliği', 
+    shortDesc: 'Sektör liderleri arasına girdik',
+    fullDesc: 'Türkiye\'nin önde gelen dijital ajansları arasına girdik. 500+ aktif müşteri portföyü, 1500+ tamamlanmış proje ve %95 müşteri memnuniyeti oranıyla sektörde lider konuma yükseldik. Kurumsal müşterilerle çalışmaya başladık ve ekibimizi genişlettik.',
     metric: '500+ müşteri',
     gradient: 'from-green-500 via-emerald-500 to-green-600',
     bgGradient: 'from-green-500/10 to-emerald-500/5',
@@ -109,7 +114,8 @@ const milestones = [
   { 
     year: '2023', 
     title: 'AI Dönemi', 
-    description: 'Yapay zeka entegrasyonları',
+    shortDesc: 'Yapay zeka entegrasyonları',
+    fullDesc: 'Yapay zeka teknolojilerini tüm hizmetlerimize entegre ettik. AI destekli içerik üretimi, SEO optimizasyonu, müşteri analizi ve otomasyon çözümleri geliştirdik. ChatGPT, Midjourney ve diğer AI araçlarını iş süreçlerimize dahil ederek verimliliği artırdık.',
     metric: 'AI-powered',
     gradient: 'from-yellow-500 via-amber-500 to-yellow-600',
     bgGradient: 'from-yellow-500/10 to-amber-500/5',
@@ -117,17 +123,19 @@ const milestones = [
   },
   { 
     year: '2024', 
-    title: 'Global', 
-    description: 'Avrupa pazarına açılma',
-    metric: 'EU ready',
+    title: 'Global Vizyon', 
+    shortDesc: 'Avrupa pazarına açılma',
+    fullDesc: 'Avrupa pazarına açılma stratejimizi hayata geçirdik. Uluslararası e-ticaret platformları, çok dilli SEO hizmetleri ve global dijital pazarlama çözümleriyle yurt dışı müşterilere hizmet vermeye başladık. AB standartlarında hizmet kalitesini yakaladık.',
+    metric: 'EU expansion',
     gradient: 'from-orange-500 via-red-500 to-orange-600',
     bgGradient: 'from-orange-500/10 to-red-500/5',
     shadow: 'shadow-orange-500/50'
   },
   { 
     year: '2025', 
-    title: 'Enterprise', 
-    description: 'Kurumsal müşteri odağı',
+    title: 'Enterprise Odak', 
+    shortDesc: 'Kurumsal müşteri odağı',
+    fullDesc: 'Tagdio lansmanı ve kurumsal müşteri odağına geçiş yaptık. Fortune 500 şirketleri ve büyük ölçekli işletmeler için enterprise çözümler geliştirdik. Özel yazılım projeleri, kurumsal danışmanlık ve stratejik partnerliklerle yeni bir döneme girdik.',
     metric: 'Enterprise',
     gradient: 'from-red-500 via-pink-500 to-red-600',
     bgGradient: 'from-red-500/10 to-pink-500/5',
@@ -287,7 +295,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Journey Section - BENTO BOX GRID (NO TIMELINE) */}
+      {/* Journey Section - HOVER EXPANDABLE CARDS */}
       <section id="yolculugumuz" className="relative bg-gradient-to-br from-gray-50 via-white to-gray-50 py-16 sm:py-20 lg:py-24 overflow-hidden">
         {/* Decorative Background */}
         <div className="absolute inset-0 opacity-5">
@@ -310,122 +318,137 @@ export default function AboutPage() {
             </p>
           </div>
 
-          {/* Bento Box Grid - Desktop (2x4) */}
+          {/* Expandable Cards Grid - Desktop (4 columns) */}
           <div className="hidden lg:grid grid-cols-4 gap-6 max-w-6xl mx-auto">
             {milestones.map((milestone, index) => (
               <div
                 key={index}
-                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent hover:shadow-2xl ${milestone.shadow} transition-all duration-300 hover:scale-105 hover:-translate-y-2`}
+                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden`}
                 style={{
                   transformStyle: 'preserve-3d',
                 }}
               >
-                {/* Gradient Border Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl`} />
+                {/* Gradient Glow on Hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl ${milestone.shadow}`} />
                 
-                <div className="relative">
-                  {/* Year Badge */}
+                {/* Default State (Compact) */}
+                <div className="relative transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
                   <div className="flex items-center justify-between mb-4">
                     <span className={`text-3xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
                       {milestone.year}
                     </span>
                   </div>
-
-                  {/* Title */}
                   <h3 className="text-xl font-black text-gray-900 mb-3">
                     {milestone.title}
                   </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    {milestone.description}
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2">
+                    {milestone.shortDesc}
                   </p>
-
-                  {/* Metric Badge */}
                   <div className={`inline-block px-4 py-2 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
                     <span className="text-white font-bold text-xs">
                       {milestone.metric}
                     </span>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
 
-          {/* Bento Box Grid - Tablet (2x4) */}
-          <div className="hidden sm:grid lg:hidden grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {milestones.map((milestone, index) => (
-              <div
-                key={index}
-                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent hover:shadow-2xl ${milestone.shadow} transition-all duration-300 hover:scale-105 hover:-translate-y-2`}
-              >
-                {/* Gradient Border Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl`} />
-                
-                <div className="relative">
-                  {/* Year Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <span className={`text-2xl sm:text-3xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                {/* Hover State (Expanded with Full Info) */}
+                <div className="absolute inset-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-100 scale-95">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className={`text-2xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
                       {milestone.year}
                     </span>
+                    <div className={`px-3 py-1 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                      <span className="text-white font-bold text-xs">
+                        {milestone.metric}
+                      </span>
+                    </div>
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-lg sm:text-xl font-black text-gray-900 mb-3">
+                  <h3 className="text-lg font-black text-gray-900 mb-3">
                     {milestone.title}
                   </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    {milestone.description}
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {milestone.fullDesc}
                   </p>
-
-                  {/* Metric Badge */}
-                  <div className={`inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
-                    <span className="text-white font-bold text-xs">
-                      {milestone.metric}
-                    </span>
-                  </div>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Bento Box Grid - Mobile (1 column) */}
-          <div className="sm:hidden grid grid-cols-1 gap-6 max-w-md mx-auto">
+          {/* Expandable Cards Grid - Tablet (2 columns) */}
+          <div className="hidden sm:grid lg:hidden grid-cols-2 gap-6 max-w-4xl mx-auto">
             {milestones.map((milestone, index) => (
               <div
                 key={index}
-                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent hover:shadow-2xl ${milestone.shadow} transition-all duration-300 hover:scale-105`}
+                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200 hover:border-transparent transition-all duration-500 overflow-hidden`}
               >
-                {/* Gradient Border Effect */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${milestone.gradient} opacity-0 group-hover:opacity-100 rounded-3xl transition-opacity -z-10 blur-xl ${milestone.shadow}`} />
                 
-                <div className="relative">
-                  {/* Year Badge */}
+                {/* Default State */}
+                <div className="relative transition-all duration-500 group-hover:opacity-0 group-hover:scale-95">
                   <div className="flex items-center justify-between mb-4">
                     <span className={`text-2xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
                       {milestone.year}
                     </span>
                   </div>
-
-                  {/* Title */}
                   <h3 className="text-lg font-black text-gray-900 mb-3">
                     {milestone.title}
                   </h3>
-
-                  {/* Description */}
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">
-                    {milestone.description}
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed line-clamp-2">
+                    {milestone.shortDesc}
                   </p>
-
-                  {/* Metric Badge */}
                   <div className={`inline-block px-3 py-1.5 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
                     <span className="text-white font-bold text-xs">
                       {milestone.metric}
                     </span>
                   </div>
                 </div>
+
+                {/* Hover State */}
+                <div className="absolute inset-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className={`text-xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                      {milestone.year}
+                    </span>
+                    <div className={`px-3 py-1 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                      <span className="text-white font-bold text-xs">
+                        {milestone.metric}
+                      </span>
+                    </div>
+                  </div>
+                  <h3 className="text-base font-black text-gray-900 mb-2">
+                    {milestone.title}
+                  </h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    {milestone.fullDesc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Mobile (1 column) - Always Expanded */}
+          <div className="sm:hidden grid grid-cols-1 gap-6 max-w-md mx-auto">
+            {milestones.map((milestone, index) => (
+              <div
+                key={index}
+                className={`group relative bg-gradient-to-br ${milestone.bgGradient} backdrop-blur-sm rounded-3xl p-6 border-2 border-gray-200`}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <span className={`text-2xl font-black bg-gradient-to-r ${milestone.gradient} bg-clip-text text-transparent`}>
+                    {milestone.year}
+                  </span>
+                  <div className={`px-3 py-1.5 bg-gradient-to-r ${milestone.gradient} rounded-full`}>
+                    <span className="text-white font-bold text-xs">
+                      {milestone.metric}
+                    </span>
+                  </div>
+                </div>
+                <h3 className="text-lg font-black text-gray-900 mb-3">
+                  {milestone.title}
+                </h3>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  {milestone.fullDesc}
+                </p>
               </div>
             ))}
           </div>
