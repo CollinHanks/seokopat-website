@@ -159,7 +159,7 @@ export default function ContactPage() {
                 Hemen Başlayalım
               </a>
               <a
-                href={`https://wa.me/${contactInfo.phoneClean}?text=Merhaba, bilgi almak istiyorum.`}
+                href={`https://wa.me/${contactInfo.phoneClean}?text=Merhaba!%20Seokopat%20hakkında%20bilgi%20almak%20istiyorum.`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-green-500 text-white font-black rounded-xl hover:bg-green-600 transition-all shadow-2xl hover:scale-105 text-base sm:text-lg"
@@ -569,7 +569,7 @@ export default function ContactPage() {
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-gray-200">
             <div className="relative w-full h-[450px] sm:h-[550px] lg:h-[650px]">
               <iframe
-                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.1234567890123!2d${contactInfo.address.lng}!3d${contactInfo.address.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDAzJzMxLjciTiAyOMKwNTknMTIuMSJF!5e0!3m2!1str!2str!4v1234567890123!5m2!1str!2str`}
+                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.5!2d${contactInfo.address.lng}!3d${contactInfo.address.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7a2b5c6b6b1%3A0x123456789!2sSinpa%C5%9F%20Queen%20Bomonti%20Rezidans!5e0!3m2!1str!2str!4v1234567890123!5m2!1str!2str`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
