@@ -76,8 +76,8 @@ export default function ContactPage() {
       postalCode: '34380',
       fullAddress: 'Bomonti Sinpaş Queen Residence, Cumhuriyet, İncirli Dede Cd. No:8, 34380 Şişli/İstanbul',
       // Sinpaş Queen Residence Bomonti koordinatları
-      lat: 41.0588,
-      lng: 28.9867
+      lat: 41.05790364248265,
+      lng: 28.975364424273387
     },
     hours: {
       weekday: 'Pazartesi - Cuma: 09:00 - 18:00',
