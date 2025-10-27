@@ -7,8 +7,16 @@ import { useState, useEffect } from 'react';
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
-  const [activeService, setActiveService] = useState<number | null>(null);
-  const [isHovering, setIsHovering] = useState(false);
+  
+  // Her menü için ayrı state
+  const [activeHizmet, setActiveHizmet] = useState<number | null>(null);
+  const [activeUygulama, setActiveUygulama] = useState<number | null>(null);
+  const [activeKurumsal, setActiveKurumsal] = useState<number | null>(null);
+  
+  // Hover durumları
+  const [isHoveringHizmet, setIsHoveringHizmet] = useState(false);
+  const [isHoveringUygulama, setIsHoveringUygulama] = useState(false);
+  const [isHoveringKurumsal, setIsHoveringKurumsal] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,15 +56,35 @@ export default function Footer() {
     { isim: 'Çerez Politikası', link: '/cerez-politikasi' }
   ];
 
-  // Intelligent hover effect - random animation when not hovering
+  // Random animasyon - Hizmetler
   useEffect(() => {
-    if (!isHovering) {
+    if (!isHoveringHizmet) {
       const interval = setInterval(() => {
-        setActiveService(Math.floor(Math.random() * hizmetler.length));
+        setActiveHizmet(Math.floor(Math.random() * hizmetler.length));
       }, 2000);
       return () => clearInterval(interval);
     }
-  }, [isHovering, hizmetler.length]);
+  }, [isHoveringHizmet, hizmetler.length]);
+
+  // Random animasyon - Uygulamalar
+  useEffect(() => {
+    if (!isHoveringUygulama) {
+      const interval = setInterval(() => {
+        setActiveUygulama(Math.floor(Math.random() * uygulamalar.length));
+      }, 2200); // Farklı tempo
+      return () => clearInterval(interval);
+    }
+  }, [isHoveringUygulama, uygulamalar.length]);
+
+  // Random animasyon - Kurumsal
+  useEffect(() => {
+    if (!isHoveringKurumsal) {
+      const interval = setInterval(() => {
+        setActiveKurumsal(Math.floor(Math.random() * kurumsal.length));
+      }, 1800); // Farklı tempo
+      return () => clearInterval(interval);
+    }
+  }, [isHoveringKurumsal, kurumsal.length]);
 
   // Koordinatlar - Sinpaş Queen Bomonti
   const officeLocation = {
@@ -94,7 +122,7 @@ export default function Footer() {
                 />
               </Link>
               
-              <p className="text-blue-200 mb-8 leading-relaxed text-[15px]">
+              <p className="text-blue-200 mb-8 leading-relaxed text-sm sm:text-[15px]">
                 AI destekli dijital çözümlerle işletmenizi büyütün. SEO'dan yazılım geliştirmeye, tek adres.
               </p>
 
@@ -134,21 +162,21 @@ export default function Footer() {
                     Hizmetler
                   </h3>
                   <ul className="space-y-3"
-                      onMouseEnter={() => setIsHovering(true)}
-                      onMouseLeave={() => setIsHovering(false)}
+                      onMouseEnter={() => setIsHoveringHizmet(true)}
+                      onMouseLeave={() => setIsHoveringHizmet(false)}
                   >
                     {hizmetler.map((hizmet, index) => (
                       <li key={index}>
                         <Link 
                           href={hizmet.link}
-                          onMouseEnter={() => setActiveService(index)}
-                          className="text-blue-200 hover:text-white transition-all text-[15px] block relative group"
+                          onMouseEnter={() => setActiveHizmet(index)}
+                          className="text-blue-200 hover:text-white transition-all text-sm sm:text-[15px] block relative group"
                         >
                           <span className="relative inline-block">
                             {hizmet.isim}
                             <span 
                               className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 ${
-                                activeService === index ? 'w-full' : 'w-0'
+                                activeHizmet === index ? 'w-full' : 'w-0'
                               }`}
                             />
                           </span>
@@ -158,40 +186,62 @@ export default function Footer() {
                   </ul>
                 </div>
 
-                {/* Uygulamalar */}
+                {/* Uygulamalar - Intelligent Hover */}
                 <div>
                   <h3 className="text-white font-bold text-base mb-5 flex items-center">
                     <span className="w-1 h-5 bg-gradient-to-b from-pink-500 to-purple-600 rounded-full mr-3"></span>
                     Uygulamalar
                   </h3>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3"
+                      onMouseEnter={() => setIsHoveringUygulama(true)}
+                      onMouseLeave={() => setIsHoveringUygulama(false)}
+                  >
                     {uygulamalar.map((app, index) => (
                       <li key={index}>
                         <Link 
                           href={app.link}
-                          className="text-blue-200 hover:text-white hover:translate-x-1 transition-all text-[15px] block"
+                          onMouseEnter={() => setActiveUygulama(index)}
+                          className="text-blue-200 hover:text-white transition-all text-sm sm:text-[15px] block relative group"
                         >
-                          {app.isim}
+                          <span className="relative inline-block">
+                            {app.isim}
+                            <span 
+                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 ${
+                                activeUygulama === index ? 'w-full' : 'w-0'
+                              }`}
+                            />
+                          </span>
                         </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                {/* Kurumsal */}
+                {/* Kurumsal - Intelligent Hover */}
                 <div>
                   <h3 className="text-white font-bold text-base mb-5 flex items-center">
                     <span className="w-1 h-5 bg-gradient-to-b from-pink-500 to-purple-600 rounded-full mr-3"></span>
                     Kurumsal
                   </h3>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3"
+                      onMouseEnter={() => setIsHoveringKurumsal(true)}
+                      onMouseLeave={() => setIsHoveringKurumsal(false)}
+                  >
                     {kurumsal.map((item, index) => (
                       <li key={index}>
                         <Link 
                           href={item.link}
-                          className="text-blue-200 hover:text-white hover:translate-x-1 transition-all text-[15px] block"
+                          onMouseEnter={() => setActiveKurumsal(index)}
+                          className="text-blue-200 hover:text-white transition-all text-sm sm:text-[15px] block relative group"
                         >
-                          {item.isim}
+                          <span className="relative inline-block">
+                            {item.isim}
+                            <span 
+                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 ${
+                                activeKurumsal === index ? 'w-full' : 'w-0'
+                              }`}
+                            />
+                          </span>
                         </Link>
                       </li>
                     ))}
@@ -206,7 +256,7 @@ export default function Footer() {
                   </h3>
                   <ul className="space-y-3">
                     {/* Adres - Tıklanabilir */}
-                    <li className="flex items-start text-blue-200 text-[15px] group">
+                    <li className="flex items-start text-blue-200 text-sm sm:text-[15px] group">
                       <svg className="w-4 h-4 mr-3 flex-shrink-0 mt-1 text-pink-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -222,7 +272,7 @@ export default function Footer() {
                     </li>
                     
                     {/* Email */}
-                    <li className="flex items-start text-blue-200 text-[15px] group">
+                    <li className="flex items-start text-blue-200 text-sm sm:text-[15px] group">
                       <svg className="w-4 h-4 mr-3 flex-shrink-0 mt-1 text-pink-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
@@ -232,7 +282,7 @@ export default function Footer() {
                     </li>
                     
                     {/* Telefon */}
-                    <li className="flex items-start text-blue-200 text-[15px] group">
+                    <li className="flex items-start text-blue-200 text-sm sm:text-[15px] group">
                       <svg className="w-4 h-4 mr-3 flex-shrink-0 mt-1 text-pink-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
@@ -242,7 +292,7 @@ export default function Footer() {
                     </li>
                     
                     {/* Çalışma Saatleri */}
-                    <li className="flex items-start text-blue-200 text-[15px] group">
+                    <li className="flex items-start text-blue-200 text-sm sm:text-[15px] group">
                       <svg className="w-4 h-4 mr-3 flex-shrink-0 mt-1 text-pink-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -256,14 +306,14 @@ export default function Footer() {
 
           </div>
 
-          {/* Newsletter - YATAY İNCE EPİK - HİZALI */}
+          {/* Newsletter - MOBİL + DESKTOP OPTİMİZE */}
           <div className="border-t border-white/20 pt-8">
             <div className="bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/20 shadow-2xl">
               <div className="max-w-4xl mx-auto">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
                   
                   {/* Sol: Text */}
-                  <div className="text-center md:text-left flex-shrink-0">
+                  <div className="text-center md:text-left flex-shrink-0 w-full md:w-auto">
                     <h3 className="text-white font-bold text-base sm:text-lg mb-1 flex items-center justify-center md:justify-start">
                       <span className="text-2xl mr-2">📬</span>
                       Dijital İpuçları
@@ -273,7 +323,7 @@ export default function Footer() {
                     </p>
                   </div>
 
-                  {/* Sağ: Form - MOBİL OPTİMİZE */}
+                  {/* Sağ: Form - MOBİL DİKEY, DESKTOP YATAY */}
                   <div className="w-full md:flex-1 md:max-w-md">
                     {!subscribed ? (
                       <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
@@ -309,7 +359,7 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar - Epic */}
+        {/* Bottom Bar */}
         <div className="border-t border-white/10 backdrop-blur-sm mt-8">
           <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
