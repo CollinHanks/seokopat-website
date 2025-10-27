@@ -8,15 +8,12 @@ export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
   
-  // Her menü için ayrı state
-  const [activeHizmet, setActiveHizmet] = useState<number | null>(null);
-  const [activeUygulama, setActiveUygulama] = useState<number | null>(null);
-  const [activeKurumsal, setActiveKurumsal] = useState<number | null>(null);
+  // TEK state - hangi kolonun aktif olduğunu tutar
+  const [activeColumn, setActiveColumn] = useState<'hizmetler' | 'uygulamalar' | 'kurumsal' | null>(null);
+  const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
   
-  // Hover durumları
-  const [isHoveringHizmet, setIsHoveringHizmet] = useState(false);
-  const [isHoveringUygulama, setIsHoveringUygulama] = useState(false);
-  const [isHoveringKurumsal, setIsHoveringKurumsal] = useState(false);
+  // Mouse tracking
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,35 +53,27 @@ export default function Footer() {
     { isim: 'Çerez Politikası', link: '/cerez-politikasi' }
   ];
 
-  // Random animasyon - Hizmetler
+  // Random animasyon - Mouse yokken TEK kolonda
   useEffect(() => {
-    if (!isHoveringHizmet) {
+    if (!isHovering) {
       const interval = setInterval(() => {
-        setActiveHizmet(Math.floor(Math.random() * hizmetler.length));
+        // Random kolon seç
+        const columns = ['hizmetler', 'uygulamalar', 'kurumsal'] as const;
+        const randomColumn = columns[Math.floor(Math.random() * columns.length)];
+        
+        // O kolondan random item seç
+        let maxIndex = 0;
+        if (randomColumn === 'hizmetler') maxIndex = hizmetler.length;
+        else if (randomColumn === 'uygulamalar') maxIndex = uygulamalar.length;
+        else maxIndex = kurumsal.length;
+        
+        setActiveColumn(randomColumn);
+        setActiveItemIndex(Math.floor(Math.random() * maxIndex));
       }, 2000);
+      
       return () => clearInterval(interval);
     }
-  }, [isHoveringHizmet, hizmetler.length]);
-
-  // Random animasyon - Uygulamalar
-  useEffect(() => {
-    if (!isHoveringUygulama) {
-      const interval = setInterval(() => {
-        setActiveUygulama(Math.floor(Math.random() * uygulamalar.length));
-      }, 2200); // Farklı tempo
-      return () => clearInterval(interval);
-    }
-  }, [isHoveringUygulama, uygulamalar.length]);
-
-  // Random animasyon - Kurumsal
-  useEffect(() => {
-    if (!isHoveringKurumsal) {
-      const interval = setInterval(() => {
-        setActiveKurumsal(Math.floor(Math.random() * kurumsal.length));
-      }, 1800); // Farklı tempo
-      return () => clearInterval(interval);
-    }
-  }, [isHoveringKurumsal, kurumsal.length]);
+  }, [isHovering, hizmetler.length, uygulamalar.length, kurumsal.length]);
 
   // Koordinatlar - Sinpaş Queen Bomonti
   const officeLocation = {
@@ -152,31 +141,34 @@ export default function Footer() {
             </div>
 
             {/* Sağ: 4 Menü Kolonu */}
-            <div className="lg:col-span-9">
+            <div className="lg:col-span-9"
+                 onMouseEnter={() => setIsHovering(true)}
+                 onMouseLeave={() => setIsHovering(false)}
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
                 
-                {/* Hizmetler - Intelligent Hover */}
+                {/* Hizmetler */}
                 <div>
                   <h3 className="text-white font-bold text-base mb-5 flex items-center">
                     <span className="w-1 h-5 bg-gradient-to-b from-pink-500 to-purple-600 rounded-full mr-3"></span>
                     Hizmetler
                   </h3>
-                  <ul className="space-y-3"
-                      onMouseEnter={() => setIsHoveringHizmet(true)}
-                      onMouseLeave={() => setIsHoveringHizmet(false)}
-                  >
+                  <ul className="space-y-3">
                     {hizmetler.map((hizmet, index) => (
                       <li key={index}>
                         <Link 
                           href={hizmet.link}
-                          onMouseEnter={() => setActiveHizmet(index)}
+                          onMouseEnter={() => {
+                            setActiveColumn('hizmetler');
+                            setActiveItemIndex(index);
+                          }}
                           className="text-blue-200 hover:text-white transition-all text-sm sm:text-[15px] block relative group"
                         >
                           <span className="relative inline-block">
                             {hizmet.isim}
                             <span 
-                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 ${
-                                activeHizmet === index ? 'w-full' : 'w-0'
+                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 shadow-lg shadow-pink-500/50 ${
+                                activeColumn === 'hizmetler' && activeItemIndex === index ? 'w-full' : 'w-0'
                               }`}
                             />
                           </span>
@@ -186,28 +178,28 @@ export default function Footer() {
                   </ul>
                 </div>
 
-                {/* Uygulamalar - Intelligent Hover */}
+                {/* Uygulamalar */}
                 <div>
                   <h3 className="text-white font-bold text-base mb-5 flex items-center">
                     <span className="w-1 h-5 bg-gradient-to-b from-pink-500 to-purple-600 rounded-full mr-3"></span>
                     Uygulamalar
                   </h3>
-                  <ul className="space-y-3"
-                      onMouseEnter={() => setIsHoveringUygulama(true)}
-                      onMouseLeave={() => setIsHoveringUygulama(false)}
-                  >
+                  <ul className="space-y-3">
                     {uygulamalar.map((app, index) => (
                       <li key={index}>
                         <Link 
                           href={app.link}
-                          onMouseEnter={() => setActiveUygulama(index)}
+                          onMouseEnter={() => {
+                            setActiveColumn('uygulamalar');
+                            setActiveItemIndex(index);
+                          }}
                           className="text-blue-200 hover:text-white transition-all text-sm sm:text-[15px] block relative group"
                         >
                           <span className="relative inline-block">
                             {app.isim}
                             <span 
-                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 ${
-                                activeUygulama === index ? 'w-full' : 'w-0'
+                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 shadow-lg shadow-pink-500/50 ${
+                                activeColumn === 'uygulamalar' && activeItemIndex === index ? 'w-full' : 'w-0'
                               }`}
                             />
                           </span>
@@ -217,28 +209,28 @@ export default function Footer() {
                   </ul>
                 </div>
 
-                {/* Kurumsal - Intelligent Hover */}
+                {/* Kurumsal */}
                 <div>
                   <h3 className="text-white font-bold text-base mb-5 flex items-center">
                     <span className="w-1 h-5 bg-gradient-to-b from-pink-500 to-purple-600 rounded-full mr-3"></span>
                     Kurumsal
                   </h3>
-                  <ul className="space-y-3"
-                      onMouseEnter={() => setIsHoveringKurumsal(true)}
-                      onMouseLeave={() => setIsHoveringKurumsal(false)}
-                  >
+                  <ul className="space-y-3">
                     {kurumsal.map((item, index) => (
                       <li key={index}>
                         <Link 
                           href={item.link}
-                          onMouseEnter={() => setActiveKurumsal(index)}
+                          onMouseEnter={() => {
+                            setActiveColumn('kurumsal');
+                            setActiveItemIndex(index);
+                          }}
                           className="text-blue-200 hover:text-white transition-all text-sm sm:text-[15px] block relative group"
                         >
                           <span className="relative inline-block">
                             {item.isim}
                             <span 
-                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 ${
-                                activeKurumsal === index ? 'w-full' : 'w-0'
+                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 shadow-lg shadow-pink-500/50 ${
+                                activeColumn === 'kurumsal' && activeItemIndex === index ? 'w-full' : 'w-0'
                               }`}
                             />
                           </span>
@@ -306,8 +298,8 @@ export default function Footer() {
 
           </div>
 
-          {/* Newsletter - MOBİL + DESKTOP OPTİMİZE */}
-          <div className="border-t border-white/20 pt-8">
+          {/* Newsletter - EŞİT HİZALAMA */}
+          <div className="border-t border-white/20 pt-10 pb-10">
             <div className="bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/20 shadow-2xl">
               <div className="max-w-4xl mx-auto">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
@@ -323,7 +315,7 @@ export default function Footer() {
                     </p>
                   </div>
 
-                  {/* Sağ: Form - MOBİL DİKEY, DESKTOP YATAY */}
+                  {/* Sağ: Form */}
                   <div className="w-full md:flex-1 md:max-w-md">
                     {!subscribed ? (
                       <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
@@ -360,7 +352,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 backdrop-blur-sm mt-8">
+        <div className="border-t border-white/10 backdrop-blur-sm">
           <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-blue-200 text-sm text-center md:text-left">
