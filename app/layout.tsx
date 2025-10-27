@@ -18,13 +18,9 @@ export const metadata: Metadata = {
   creator: 'Seokopat',
   publisher: 'Seokopat',
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-    ],
+    icon: '/favicon.ico',
     shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    apple: '/apple-icon.png',
   },
   robots: {
     index: true,
@@ -69,19 +65,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="tr" className="overflow-x-hidden">
+    <html lang="tr">
       <head>
-        {/* Favicon - Mobilde ve Desktop'ta Görünsün */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        
-        {/* Viewport - Mobil Optimize */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
-        
-        {/* Theme Color - Mobil Browser Bar */}
-        <meta name="theme-color" content="#ec4899" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body className={`${inter.className} bg-white text-gray-900 overflow-x-hidden`}>
         <Header />
