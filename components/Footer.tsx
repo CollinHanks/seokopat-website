@@ -66,7 +66,7 @@ export default function Footer() {
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 pt-16 sm:pt-20 pb-8">
           
           {/* Ana Grid: Logo + Menüler */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-12">
             
             {/* Sol: Logo + Açıklama + Sosyal Medya */}
             <div className="lg:col-span-3">
@@ -237,8 +237,8 @@ export default function Footer() {
 
           </div>
 
-          {/* Newsletter - TAM HİZALI */}
-          <div className="border-t border-white/20 py-10">
+          {/* Newsletter - TAM EŞİT MESAFE */}
+          <div className="border-t border-white/20 pt-12">
             <div className="bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-7 border border-white/20 shadow-2xl">
               <div className="max-w-4xl mx-auto">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-5 md:gap-8">
@@ -286,29 +286,46 @@ export default function Footer() {
                 </div>
               </div>
             </div>
+            
+            {/* Alt Çizgi - EŞİT MESAFE */}
+            <div className="border-t border-white/10 mt-12" />
           </div>
 
         </div>
 
-        {/* Bottom Bar - Modern */}
-        <div className="border-t border-white/10">
-          <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 py-7">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-5">
-              <p className="text-blue-200 text-sm text-center md:text-left">
-                © 2025 Seokopat. Tüm hakları saklıdır.
-              </p>
-              <div className="flex flex-wrap justify-center gap-6 text-sm">
-                {yasal.map((item, index) => (
-                  <Link 
-                    key={index}
-                    href={item.link}
-                    className="text-blue-200 hover:text-white transition-colors whitespace-nowrap relative group"
-                  >
-                    {item.isim}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 group-hover:w-full transition-all duration-300" />
-                  </Link>
-                ))}
+        {/* Bottom Bar - KVKK Linkler - Hemen Ara Küçültüldü */}
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 py-6">
+          {/* Hemen Ara - Font Küçültüldü */}
+          <div className="mb-6">
+            <a 
+              href="tel:+905408484834"
+              className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl hover:scale-105"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <div className="text-left">
+                <div className="text-xs font-medium opacity-90">Hemen Ara</div>
+                <div className="text-sm font-bold">+90 540 848 48 34</div>
               </div>
+            </a>
+          </div>
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-5">
+            <p className="text-blue-200 text-sm text-center md:text-left">
+              © 2025 Seokopat. Tüm hakları saklıdır.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              {yasal.map((item, index) => (
+                <Link 
+                  key={index}
+                  href={item.link}
+                  className="text-blue-200 hover:text-white transition-colors whitespace-nowrap relative group"
+                >
+                  {item.isim}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 group-hover:w-full transition-all duration-300" />
+                </Link>
+              ))}
             </div>
           </div>
         </div>
