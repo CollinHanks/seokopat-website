@@ -293,24 +293,8 @@ export default function Footer() {
 
         </div>
 
-        {/* Bottom Bar - KVKK Linkler - Hemen Ara Küçültüldü */}
+        {/* Bottom Bar - KVKK Linkler - HEMEN ARA KALDIRILDI */}
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 py-6">
-          {/* Hemen Ara - Font Küçültüldü */}
-          <div className="mb-6">
-            <a 
-              href="tel:+905408484834"
-              className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg hover:shadow-xl hover:scale-105"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <div className="text-left">
-                <div className="text-xs font-medium opacity-90">Hemen Ara</div>
-                <div className="text-sm font-bold">+90 540 848 48 34</div>
-              </div>
-            </a>
-          </div>
-
           <div className="flex flex-col md:flex-row justify-between items-center gap-5">
             <p className="text-blue-200 text-sm text-center md:text-left">
               © 2025 Seokopat. Tüm hakları saklıdır.
