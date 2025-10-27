@@ -569,7 +569,7 @@ export default function ContactPage() {
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-gray-200">
             <div className="relative w-full h-[450px] sm:h-[550px] lg:h-[650px]">
               <iframe
-                src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3008.5!2d${contactInfo.address.lng}!3d${contactInfo.address.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab7a2b5c6b6b1%3A0x123456789!2sSinpa%C5%9F%20Queen%20Bomonti%20Rezidans!5e0!3m2!1str!2str!4v1234567890123!5m2!1str!2str`}
+                src={`https://www.google.com/maps?q=${contactInfo.address.lat},${contactInfo.address.lng}&hl=tr&z=16&output=embed`}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -610,18 +610,60 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Location Benefits */}
+          {/* Location Benefits - ULTRA EPİK */}
           <div className="mt-10 sm:mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: '🚇', title: 'Metro Yakın', desc: '5 dakika yürüme' },
-              { icon: '🚗', title: 'Otopark', desc: 'Ücretsiz park' },
-              { icon: '☕', title: 'Çevre', desc: 'Cafe & Restaurant' },
-              { icon: '🏢', title: 'Merkezi', desc: 'Bomonti iş merkezi' }
+              { 
+                icon: '🚇', 
+                title: 'Metro Yakın', 
+                desc: '5 dakika yürüme',
+                gradient: 'from-blue-500 to-cyan-500'
+              },
+              { 
+                icon: '🚗', 
+                title: 'Otopark', 
+                desc: 'Ücretsiz park',
+                gradient: 'from-purple-500 to-pink-500'
+              },
+              { 
+                icon: '☕', 
+                title: 'Çevre', 
+                desc: 'Cafe & Restaurant',
+                gradient: 'from-orange-500 to-red-500'
+              },
+              { 
+                icon: '🏢', 
+                title: 'Merkezi', 
+                desc: 'Bomonti iş merkezi',
+                gradient: 'from-green-500 to-emerald-500'
+              }
             ].map((item, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-purple-500 transition-all hover:shadow-xl text-center group">
-                <div className="text-4xl mb-3 group-hover:scale-125 transition-transform">{item.icon}</div>
-                <div className="font-black text-gray-900 mb-1">{item.title}</div>
-                <div className="text-sm text-gray-600">{item.desc}</div>
+              <div 
+                key={index} 
+                className="relative bg-white rounded-2xl p-6 border-2 border-gray-200 hover:border-transparent transition-all hover:shadow-2xl text-center group overflow-hidden"
+              >
+                {/* Gradient Background on Hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
+                
+                {/* Icon Circle */}
+                <div className={`relative mx-auto w-16 h-16 bg-gradient-to-br ${item.gradient} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg`}>
+                  <span className="text-3xl filter drop-shadow-lg">{item.icon}</span>
+                </div>
+                
+                {/* Content */}
+                <div className="relative">
+                  <div className="font-black text-lg text-gray-900 mb-2 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-purple-600 group-hover:to-pink-600 transition-all">
+                    {item.title}
+                  </div>
+                  <div className="text-sm text-gray-600 font-medium">
+                    {item.desc}
+                  </div>
+                </div>
+                
+                {/* Shine Effect */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute -inset-full top-0 block h-full w-1/2 transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
+                </div>
               </div>
             ))}
           </div>
