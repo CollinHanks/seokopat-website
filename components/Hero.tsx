@@ -7,8 +7,8 @@ import { ArrowRightIcon, SparklesIcon } from '@heroicons/react/24/outline'
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-seokopat-white via-pink-50 to-blue-50">
-      {/* SADECE pt-24 md:pt-0 eklendi - AI Destekli Çözümler mobilde görünsün */}
-      <div className="container-custom section-padding pt-24 md:pt-0">
+      {/* Padding düzeltildi - Hem mobil hem desktop'ta görünsün */}
+      <div className="container-custom section-padding pt-24 md:pt-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
