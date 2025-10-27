@@ -2,11 +2,13 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [activeService, setActiveService] = useState<number | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,6 +48,23 @@ export default function Footer() {
     { isim: 'Çerez Politikası', link: '/cerez-politikasi' }
   ];
 
+  // Intelligent hover effect - random animation when not hovering
+  useEffect(() => {
+    if (!isHovering) {
+      const interval = setInterval(() => {
+        setActiveService(Math.floor(Math.random() * hizmetler.length));
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [isHovering, hizmetler.length]);
+
+  // Koordinatlar - Sinpaş Queen Bomonti
+  const officeLocation = {
+    lat: 41.05790364248265,
+    lng: 28.975364424273387,
+    address: 'Şişli, İstanbul'
+  };
+
   return (
     <footer className="relative overflow-hidden">
       {/* Epic Gradient Background */}
@@ -57,10 +76,10 @@ export default function Footer() {
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
       
       <div className="relative z-10">
-        <div className="max-w-[1600px] mx-auto px-8 sm:px-10 lg:px-16 pt-20 pb-8">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 pt-16 sm:pt-20 pb-8">
           
           {/* Ana Grid: Logo + 4 Menü */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 mb-12">
             
             {/* Sol: Logo + Açıklama + Sosyal Medya */}
             <div className="lg:col-span-3">
@@ -106,22 +125,33 @@ export default function Footer() {
 
             {/* Sağ: 4 Menü Kolonu */}
             <div className="lg:col-span-9">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
                 
-                {/* Hizmetler */}
+                {/* Hizmetler - Intelligent Hover */}
                 <div>
                   <h3 className="text-white font-bold text-base mb-5 flex items-center">
                     <span className="w-1 h-5 bg-gradient-to-b from-pink-500 to-purple-600 rounded-full mr-3"></span>
                     Hizmetler
                   </h3>
-                  <ul className="space-y-3">
+                  <ul className="space-y-3"
+                      onMouseEnter={() => setIsHovering(true)}
+                      onMouseLeave={() => setIsHovering(false)}
+                  >
                     {hizmetler.map((hizmet, index) => (
                       <li key={index}>
                         <Link 
                           href={hizmet.link}
-                          className="text-blue-200 hover:text-white hover:translate-x-1 transition-all text-[15px] block"
+                          onMouseEnter={() => setActiveService(index)}
+                          className="text-blue-200 hover:text-white transition-all text-[15px] block relative group"
                         >
-                          {hizmet.isim}
+                          <span className="relative inline-block">
+                            {hizmet.isim}
+                            <span 
+                              className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-pink-500 to-purple-600 transition-all duration-300 ${
+                                activeService === index ? 'w-full' : 'w-0'
+                              }`}
+                            />
+                          </span>
                         </Link>
                       </li>
                     ))}
@@ -135,13 +165,13 @@ export default function Footer() {
                     Uygulamalar
                   </h3>
                   <ul className="space-y-3">
-                    {uygulamalar.map((uygulama, index) => (
+                    {uygulamalar.map((app, index) => (
                       <li key={index}>
                         <Link 
-                          href={uygulama.link}
+                          href={app.link}
                           className="text-blue-200 hover:text-white hover:translate-x-1 transition-all text-[15px] block"
                         >
-                          {uygulama.isim}
+                          {app.isim}
                         </Link>
                       </li>
                     ))}
@@ -175,13 +205,23 @@ export default function Footer() {
                     İletişim
                   </h3>
                   <ul className="space-y-3">
+                    {/* Adres - Tıklanabilir */}
                     <li className="flex items-start text-blue-200 text-[15px] group">
                       <svg className="w-4 h-4 mr-3 flex-shrink-0 mt-1 text-pink-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
-                      <span className="group-hover:text-white transition-colors">İstanbul, Türkiye</span>
+                      <a 
+                        href={`https://www.google.com/maps/search/?api=1&query=${officeLocation.lat},${officeLocation.lng}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors cursor-pointer"
+                      >
+                        {officeLocation.address}
+                      </a>
                     </li>
+                    
+                    {/* Email */}
                     <li className="flex items-start text-blue-200 text-[15px] group">
                       <svg className="w-4 h-4 mr-3 flex-shrink-0 mt-1 text-pink-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -190,14 +230,18 @@ export default function Footer() {
                         info@seokopat.com
                       </a>
                     </li>
+                    
+                    {/* Telefon */}
                     <li className="flex items-start text-blue-200 text-[15px] group">
                       <svg className="w-4 h-4 mr-3 flex-shrink-0 mt-1 text-pink-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
-                      <a href="tel:+905555555555" className="hover:text-white transition-colors whitespace-nowrap">
-                        +90 555 555 55 55
+                      <a href="tel:+905408484834" className="hover:text-white transition-colors whitespace-nowrap">
+                        +90 540 848 48 34
                       </a>
                     </li>
+                    
+                    {/* Çalışma Saatleri */}
                     <li className="flex items-start text-blue-200 text-[15px] group">
                       <svg className="w-4 h-4 mr-3 flex-shrink-0 mt-1 text-pink-400 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -212,38 +256,38 @@ export default function Footer() {
 
           </div>
 
-          {/* Newsletter - YATAY İNCE EPİK - Tüm Menülerin Altında */}
+          {/* Newsletter - YATAY İNCE EPİK - HİZALI */}
           <div className="border-t border-white/20 pt-8">
-            <div className="bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-2xl">
+            <div className="bg-gradient-to-r from-white/10 via-white/5 to-white/10 backdrop-blur-sm rounded-2xl p-5 sm:p-6 border border-white/20 shadow-2xl">
               <div className="max-w-4xl mx-auto">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
                   
                   {/* Sol: Text */}
-                  <div className="text-center md:text-left">
-                    <h3 className="text-white font-bold text-lg mb-1 flex items-center justify-center md:justify-start">
+                  <div className="text-center md:text-left flex-shrink-0">
+                    <h3 className="text-white font-bold text-base sm:text-lg mb-1 flex items-center justify-center md:justify-start">
                       <span className="text-2xl mr-2">📬</span>
                       Dijital İpuçları
                     </h3>
-                    <p className="text-blue-200 text-sm">
+                    <p className="text-blue-200 text-xs sm:text-sm">
                       Haftalık SEO ve dijital pazarlama ipuçları alın
                     </p>
                   </div>
 
-                  {/* Sağ: Form */}
-                  <div className="w-full md:w-auto md:flex-1 md:max-w-md">
+                  {/* Sağ: Form - MOBİL OPTİMİZE */}
+                  <div className="w-full md:flex-1 md:max-w-md">
                     {!subscribed ? (
-                      <form onSubmit={handleSubscribe} className="flex gap-2">
+                      <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="E-posta adresiniz"
-                          className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-sm transition-all"
+                          className="flex-1 px-4 py-2.5 sm:py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent text-sm transition-all"
                           required
                         />
                         <button
                           type="submit"
-                          className="px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-xl hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg hover:shadow-2xl hover:scale-105 text-sm whitespace-nowrap"
+                          className="px-5 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-xl hover:from-pink-600 hover:to-purple-700 transition-all shadow-lg hover:shadow-2xl hover:scale-105 text-sm whitespace-nowrap"
                         >
                           Abone Ol
                         </button>
@@ -267,12 +311,12 @@ export default function Footer() {
 
         {/* Bottom Bar - Epic */}
         <div className="border-t border-white/10 backdrop-blur-sm mt-8">
-          <div className="max-w-[1600px] mx-auto px-8 sm:px-10 lg:px-16 py-6">
+          <div className="max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-blue-200 text-sm text-center md:text-left">
                 © 2025 Seokopat. Tüm hakları saklıdır.
               </p>
-              <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm">
                 {yasal.map((item, index) => (
                   <Link 
                     key={index}
