@@ -71,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="tr" className="overflow-x-hidden">
       <head>
-        {/* Favicon - Mobilde de Görünsün */}
+        {/* Favicon - Mobilde ve Desktop'ta Görünsün */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -80,11 +80,10 @@ export default function RootLayout({
         {/* Viewport - Mobil Optimize */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
         
-        {/* Theme Color - Mobil Browser Bar Rengi */}
+        {/* Theme Color - Mobil Browser Bar */}
         <meta name="theme-color" content="#ec4899" />
       </head>
       <body className={`${inter.className} bg-white text-gray-900 overflow-x-hidden`}>
-        {/* overflow-x-hidden class'ı eklendi - Yatay scroll engellendi */}
         <Header />
         <main className="min-h-screen overflow-x-hidden">
           {children}

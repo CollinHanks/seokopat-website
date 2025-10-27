@@ -7,8 +7,8 @@ import { ArrowRightIcon, SparklesIcon } from '@heroicons/react/24/outline'
 export default function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-seokopat-white via-pink-50 to-blue-50">
-      {/* Container: Desktop max-w-7xl (1280px), Mobil tam genişlik */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 pt-24 md:pt-32">
+      {/* pt-28 mobilde (112px), md:pt-32 desktop'ta (128px) - Header'ın altında görünür */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 pt-28 md:pt-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Sol Taraf - İçerik */}
@@ -17,20 +17,20 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {/* AI Destekli Çözümler Badge */}
+            {/* AI Destekli Çözümler Badge - ARTIK GÖRÜNÜR! */}
             <div className="inline-flex items-center gap-2 bg-seokopat-light-pink/10 rounded-full px-4 py-2 mb-6">
               <SparklesIcon className="h-5 w-5 text-seokopat-pink" />
               <span className="text-sm font-medium text-seokopat-navy">AI Destekli Çözümler</span>
             </div>
             
-            {/* Ana Başlık */}
+            {/* Ana Başlık - Türkçe Düzgün */}
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Dijital Başarınızı
               <span className="gradient-text"> AI ile </span>
               Hızlandırın
             </h1>
             
-            {/* Açıklama */}
+            {/* Açıklama - Türkçe Düzgün */}
             <p className="text-lg text-seokopat-blue-gray mb-8 leading-relaxed">
               SEO optimizasyonu, e-ticaret danışmanlığı ve özel yazılım çözümleri ile 
               işletmenizi dijital dünyada zirveye taşıyoruz. Shopify, Amazon, Etsy ve 
