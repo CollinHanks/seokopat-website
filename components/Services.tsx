@@ -83,19 +83,20 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
+              className="h-full"
             >
-              <Link href={service.href} className="block group">
-                <div className="bg-white rounded-2xl shadow-lg p-8 card-hover h-full">
+              <Link href={service.href} className="block group h-full">
+                <div className="bg-white rounded-2xl shadow-lg p-8 card-hover h-full flex flex-col">
                   <div className={`inline-flex p-3 rounded-xl bg-gradient-to-r ${service.color} mb-6`}>
                     <service.icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-seokopat-navy mb-3 group-hover:text-seokopat-pink transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-seokopat-blue-gray mb-4">
+                  <p className="text-seokopat-blue-gray mb-4 flex-grow">
                     {service.description}
                   </p>
-                  <div className="flex items-center text-seokopat-pink font-semibold">
+                  <div className="flex items-center text-seokopat-pink font-semibold mt-auto">
                     <span>Detaylı Bilgi</span>
                     <svg className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
